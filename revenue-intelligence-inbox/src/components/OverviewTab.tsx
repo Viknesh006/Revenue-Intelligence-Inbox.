@@ -325,13 +325,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-900 text-white p-3 rounded-xl text-xs shadow-xl border border-slate-800 space-y-1">
-                            <span className="font-bold text-cyan-300 block">{d.label} (Asia/Kolkata)</span>
-                            <div className="flex items-center justify-between space-x-4 text-slate-300">
+                          <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 p-3 rounded-2xl text-xs shadow-xl border border-slate-200/80 dark:border-slate-700 space-y-1">
+                            <span className="font-bold text-blue-600 dark:text-blue-400 block">{d.label} (Asia/Kolkata)</span>
+                            <div className="flex items-center justify-between space-x-4 text-slate-600 dark:text-slate-300">
                               <span>Total Volume:</span>
-                              <strong className="text-white">{d.total}</strong>
+                              <strong className="text-slate-900 dark:text-white">{d.total}</strong>
                             </div>
-                            <div className="flex items-center justify-between space-x-4 text-slate-400 text-[11px]">
+                            <div className="flex items-center justify-between space-x-4 text-slate-500 dark:text-slate-400 text-[11px]">
                               <span>Calls: {d.calls} • Meetings: {d.meetings}</span>
                             </div>
                           </div>
@@ -397,7 +397,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-900 text-white px-2 py-1 rounded-md text-[11px]">
+                          <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-3 py-1.5 rounded-xl text-[11px] shadow-lg border border-slate-200/80 dark:border-slate-700">
                             <strong>{d.name}</strong>: {d.count} dials
                           </div>
                         );
@@ -453,31 +453,34 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
             </p>
           </div>
 
-          {/* Widget 3: AI Assistant / Copilot (Matching Dribbble "AI Assistant" with Floating Orb) */}
-          <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-5 border border-blue-900/40 shadow-md space-y-3 relative overflow-hidden">
+          {/* Widget 3: AI Assistant / Copilot (Matching Dribbble "AI Assistant" with Floating Orb on Pure White Card) */}
+          <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Bot className="h-4 w-4 text-blue-400" />
-                <h4 className="font-bold text-xs text-white">AI Revenue Copilot</h4>
+                <Bot className="h-4 w-4 text-blue-600" />
+                <h4 className="font-bold text-xs text-slate-900 dark:text-white">AI Revenue Copilot</h4>
               </div>
-              <span className="text-[10px] text-cyan-300 font-mono">Live Grounded</span>
+              <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                Live Grounded
+              </span>
             </div>
 
-            {/* Glowing 3D Orb Visual */}
-            <div className="flex justify-center py-2">
+            {/* Glowing 3D Orb Visual on Pure White Surface */}
+            <div className="flex justify-center py-3">
               <div className="relative">
-                <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-500 shadow-lg shadow-cyan-500/50 flex items-center justify-center animate-pulse">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-blue-700 via-blue-500 to-cyan-300 shadow-xl shadow-blue-500/35 flex items-center justify-center animate-pulse">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
+                <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none" />
               </div>
             </div>
 
             {aiAnswer ? (
-              <div className="p-3 bg-white/10 rounded-xl text-[11px] text-slate-200 leading-relaxed border border-white/10 space-y-1">
+              <div className="p-3 bg-blue-50/70 dark:bg-slate-800/80 rounded-xl text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed border border-blue-100 dark:border-slate-700 space-y-1">
                 <p>{aiAnswer}</p>
                 <button
                   onClick={() => setAiAnswer(null)}
-                  className="text-[10px] text-cyan-300 underline font-semibold mt-1 block"
+                  className="text-[10px] text-blue-600 hover:text-blue-700 underline font-semibold mt-1 block"
                 >
                   Clear response
                 </button>
@@ -491,13 +494,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 placeholder="Ask about M07, C06, or partners..."
                 value={aiQuery}
                 onChange={(e) => setAiQuery(e.target.value)}
-                className="w-full text-xs pl-3 pr-8 py-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+                className="w-full text-xs pl-3.5 pr-8 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-2 text-cyan-400 hover:text-white transition"
+                className="absolute right-1.5 top-1.5 h-6 w-6 rounded-lg bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition shadow-xs"
               >
-                <Send className="h-3.5 w-3.5" />
+                <Send className="h-3 w-3" />
               </button>
             </form>
           </div>

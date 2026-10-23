@@ -132,21 +132,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
           })}
         </div>
 
-        {/* Promo / Compliance Badge Card (Matching Dribbble Dark Promo Card) */}
+        {/* Promo / Compliance Badge Card (Matching Dribbble Vibrant Royal Blue Card) */}
         <div className="mt-auto pt-2">
-          <div className="rounded-2xl p-4 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white shadow-lg border border-blue-900/40 relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-blue-500/20 rounded-full blur-xl pointer-events-none" />
+          <div className="rounded-2xl p-4 bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25 relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
             <div className="relative z-10 space-y-2">
-              <div className="h-8 w-8 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300">
+              <div className="h-8 w-8 rounded-lg bg-white/20 border border-white/30 flex items-center justify-center text-white">
                 <ShieldCheck className="h-4 w-4" />
               </div>
               <h4 className="font-bold text-xs text-white">Replay Engine Verified</h4>
-              <p className="text-[11px] text-slate-300 leading-tight">
+              <p className="text-[11px] text-blue-100 leading-tight">
                 44 records, 18 transcripts, revision 2. Manual route preserved.
               </p>
               <button
                 onClick={onOpenReplay}
-                className="w-full mt-2 py-1.5 px-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 shadow-sm"
+                className="w-full mt-2 py-1.5 px-3 bg-white hover:bg-blue-50 text-blue-700 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1 shadow-sm"
               >
                 <span>Run Replay Test</span>
                 <ArrowRight className="h-3 w-3" />
