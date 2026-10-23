@@ -1,0 +1,21 @@
+{
+  "name": "revenue-intelligence-inbox-workspace",
+  "version": "1.0.0",
+  "description": "SpendNest Revenue Intelligence Inbox - Complete Functional Solution",
+  "scripts": {
+    "dev": "npm --prefix revenue-intelligence-inbox run dev",
+    "build": "npm --prefix revenue-intelligence-inbox run build",
+    "start": "npm --prefix revenue-intelligence-inbox run start",
+    "test": "node test_replay.js",
+    "export": "node generate_exports.js",
+    "slides": "node generate_slides.js"
+  },
+  "keywords": [
+    "revenue-intelligence",
+    "sales-operations",
+    "inbox",
+    "spendnest"
+  ],
+  "author": "Antigravity Senior Full-Stack Engineering Agent",
+  "license": "UNLICENSED"
+}

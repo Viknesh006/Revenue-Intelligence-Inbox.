@@ -1,0 +1,45 @@
+source_type,source_id,record_ref,applied_source_revision,assigned_routes,output_paths,processing_state,review_state,manual_override,analysis_freshness,analyzed_source_revision,transcript_available
+call,4868e5cd-5ab8-581c-a0e4-acc37385f0cf,B01,1,"Human Review Required","review-required/B01_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,5747e4cd-e24f-5bed-bf74-9e3f326b2d77,B02,1,"Human Review Required","review-required/B02_unresponsive.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,024caffc-d16e-5843-b325-682dbc8d448e,B03,1,"Human Review Required","review-required/B03_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,530207ea-d67b-521a-8085-bdb9ae665417,B04,1,"Human Review Required","review-required/B04_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,903641e9-d761-591a-a149-334ddfcd236e,B05,1,"Human Review Required","review-required/B05_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,53f61c95-27b9-50c2-8755-08f957594950,B06,1,"Human Review Required","review-required/B06_unresponsive.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,f9be8537-1ad9-58fc-be24-78f73d09db9c,B07,1,"Human Review Required","review-required/B07_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,77350513-913c-5fed-b4e6-71009de9df03,B08,1,"Human Review Required","review-required/B08_unresponsive.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,747390bc-f359-5609-bf79-0a44ef8919bd,B09,1,"Human Review Required","review-required/B09_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,3ea930a1-0496-51e3-9dca-adc3be29331a,B10,1,"Human Review Required","review-required/B10_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,bfefcb48-1a98-5610-a0ee-0f03434188a9,B11,1,"Human Review Required","review-required/B11_unresponsive.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,9a64eb58-d462-5a6e-aa9e-c0f88852ebe0,B12,1,"Human Review Required","review-required/B12_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,6521ed7d-53fc-5b3b-be77-7d4610c90ed7,B13,1,"Human Review Required","review-required/B13_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,81da63f4-eac6-5efd-95e1-69ad6e6def25,B14,1,"Human Review Required","review-required/B14_unresponsive.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,2ada5ab0-8a84-54b7-a071-cd5bd6ad5abd,B15,1,"Human Review Required","review-required/B15_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,1f5181ed-4175-5d73-a16b-01d404b1820d,B16,1,"Human Review Required","review-required/B16_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,1645d595-1896-5201-9395-cb8a9f1c5f3a,B17,1,"Human Review Required","review-required/B17_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,26c3ccc3-63a6-55f6-a5a3-e279b36b7e88,B18,1,"Human Review Required","review-required/B18_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,6ee11c0e-c74a-5805-b552-657443378b72,B19,1,"Human Review Required","review-required/B19_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,94b4f015-b243-5b89-b435-9957125ecdd4,B20,1,"Human Review Required","review-required/B20_voicemail.md",intake_completed,no_text_logged,false,up_to_date,1,false
+call,2ec4404c-beee-5377-a63c-aab701da08ed,C01,1,"Sales Coaching; Human Review Required","sales-coaching/C01_uninterested.md; review-required/C01_uninterested.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,4b870624-8aad-5315-a60e-0db95981cf99,C02,1,"Deal Follow-up","deal-follow-up/C02_ooo.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,20d509ba-d589-5334-9aef-ea4ce6105b1a,C03,1,"Deal Follow-up","deal-follow-up/C03_follow_up.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,bcdcbf56-d338-5c78-9a97-42c2fc1c9931,C04,1,"Deal Follow-up","deal-follow-up/C04_voicemail.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,75a6b94f-7717-5cfb-9e41-0acc94415e17,C05,1,"Deal Follow-up; Sales Coaching","deal-follow-up/C05_follow_up.md; sales-coaching/C05_follow_up.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,12216d5c-e254-52c6-b344-47de4c6e1ae5,C06,1,"Sales Coaching; Human Review Required","sales-coaching/C06_uninterested.md; review-required/C06_uninterested.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,428817fa-7e9e-5418-a7d4-bb396d28dfbf,C07,1,"Partnership Opportunity","partnership-opportunities/C07_follow_up.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,129497b2-8e1d-5e01-919c-e8a852b5ff68,C08,1,"Deal Follow-up","deal-follow-up/C08_referred.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,4a1de681-f884-55e8-b1ad-de22d17cd959,C09,1,"Sales Coaching; Deal Follow-up","sales-coaching/C09_referred.md; deal-follow-up/C09_referred.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+call,b747f592-810e-583c-9b81-8db5ab035806,C10,1,"Sales Coaching; Human Review Required","sales-coaching/C10_follow_up.md; review-required/C10_follow_up.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,cb5cecac-e68d-52b7-b10b-b0c748efc467,M01,1,"Partnership Opportunity","partnership-opportunities/M01_Harborpath_Advisory___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,1a21c409-c050-5787-90af-2667e057e1b6,M02,1,"Internal or Vendor Coordination; Partnership Opportunity","internal-vendor/M02_LedgerBridge___SpendNest_discussion.md; partnership-opportunities/M02_LedgerBridge___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,398672e7-62dd-5afd-846d-0237d49792fb,M03,1,"Deal Follow-up; Sales Coaching","deal-follow-up/M03_Asterloom_Systems___SpendNest_discussion.md; sales-coaching/M03_Asterloom_Systems___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,b0f79b3d-37ba-52f9-b2bc-58b159dd6d91,M04,1,"Customer Success / Support","customer-support/M04_Cedarwave_Distribution___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,e0ecb112-ed94-5e8e-ae71-19def5536337,M05,1,"Human Review Required","review-required/M05_SpendNest_setup_-_Pinehaven_Studio.md",intake_completed,no_speech_detected,false,up_to_date,1,false
+meeting,657b9e9d-9472-5b01-a127-a648ad7e8cf7,M06,1,"Deal Follow-up","deal-follow-up/M06_Mapletrail_Services___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,4f304fff-fd40-5cfc-a366-0a134c445c2a,M07,2,"Customer Success / Support; Human Review Required","customer-support/M07_Willowfield_Trust___SpendNest_discussion.md; review-required/M07_Willowfield_Trust___SpendNest_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,true,up_to_date,2,true
+meeting,883182d8-eb86-56f9-a928-152365998d15,M08,1,"Human Review Required","review-required/M08_SpendNest_product_demonstration_-_Amberleaf_Health.md",intake_completed,no_speech_detected,false,up_to_date,1,false
+meeting,4b5b9192-f3fc-505a-8e77-4d2ffaa54594,M09,1,"Customer Success / Support","customer-support/M09_Account_setup_and_workflow_discussion.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,337f297d-9385-5b82-9e54-5019c1ed912c,M10,1,"Internal or Vendor Coordination","internal-vendor/M10_Billing_workflow_walkthrough.md; manager-brief/2026-08-21.md",analysis_completed,reviewed,false,up_to_date,1,true
+meeting,fc651475-187c-5882-a644-b501408e8647,M11,1,"Human Review Required","review-required/M11_Internal_design_discussion.md",intake_completed,no_speech_detected,false,up_to_date,1,false
+meeting,c759b921-e9d3-540c-a06b-474c5710342d,M12,1,"Human Review Required","review-required/M12_SpendNest_setup_-_Sample_account.md",intake_completed,bot_cancelled,false,up_to_date,1,false
+meeting,794a9d1c-889d-5957-873f-8a1271b03455,M13,1,"Human Review Required","review-required/M13_SpendNest____Cedarwave_Distribution_-_Migration_discussion.md",intake_completed,bot_not_scheduled,false,up_to_date,1,false
+meeting,93f4867d-65cd-5236-bc55-7bd57df8ac24,M14,1,"Human Review Required","review-required/M14_CRM_demonstration.md",intake_completed,bot_cancelled,false,up_to_date,1,false
