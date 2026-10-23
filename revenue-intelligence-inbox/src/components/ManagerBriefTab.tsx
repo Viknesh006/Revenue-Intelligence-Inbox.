@@ -83,7 +83,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
       {/* Header Banner */}
       <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">
+          <div className="flex items-center space-x-2 text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">
             <Calendar className="h-4 w-4" />
             <span>21 August 2026 • Asia/Kolkata</span>
           </div>
@@ -97,7 +97,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         <button
           onClick={downloadBriefMarkdown}
-          className="flex items-center space-x-2 px-3.5 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md transition self-start sm:self-auto"
+          className="flex items-center space-x-2 px-3.5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md transition self-start sm:self-auto"
         >
           <Download className="h-4 w-4" />
           <span>Download Markdown</span>
@@ -155,7 +155,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               3. Transcript Coverage & Methodological Boundaries
             </span>
           </div>
-          <div className="p-3 bg-cyan-50/70 dark:bg-cyan-950/20 border border-cyan-200 dark:border-cyan-800 rounded-xl text-[11px] space-y-1 text-cyan-900 dark:text-cyan-200">
+          <div className="p-3 bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-xl text-[11px] space-y-1 text-blue-900 dark:text-blue-200">
             <p>
               <strong>Data Boundary:</strong> This dataset represents a selected assessment sample. Missing transcripts do NOT imply no interaction occurred, but in accordance with governance guidelines, no analytical summaries were fabricated for unsupplied records.
             </p>
@@ -176,7 +176,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
             <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
-                  <span className="font-bold font-mono text-cyan-600">C07</span>
+                  <span className="font-bold font-mono text-blue-600">C07</span>
                   <span className="font-semibold text-slate-900 dark:text-white">Willowbank Advisory Referral Channel</span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
@@ -185,7 +185,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               </div>
               <button
                 onClick={() => openByRef('C07')}
-                className="text-xs text-cyan-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
+                className="text-xs text-blue-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
               >
                 <span>Inspect C07</span>
                 <ChevronRight className="h-3 w-3" />
@@ -195,7 +195,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
             <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
-                  <span className="font-bold font-mono text-cyan-600">M03</span>
+                  <span className="font-bold font-mono text-blue-600">M03</span>
                   <span className="font-semibold text-slate-900 dark:text-white">Asterloom Systems Enterprise Demo</span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
@@ -204,7 +204,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               </div>
               <button
                 onClick={() => openByRef('M03')}
-                className="text-xs text-cyan-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
+                className="text-xs text-blue-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
               >
                 <span>Inspect M03</span>
                 <ChevronRight className="h-3 w-3" />
@@ -214,7 +214,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
             <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
-                  <span className="font-bold font-mono text-cyan-600">C03</span>
+                  <span className="font-bold font-mono text-blue-600">C03</span>
                   <span className="font-semibold text-slate-900 dark:text-white">Milan Developer API Access Pricing</span>
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
@@ -223,7 +223,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               </div>
               <button
                 onClick={() => openByRef('C03')}
-                className="text-xs text-cyan-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
+                className="text-xs text-blue-600 hover:underline flex items-center space-x-0.5 flex-shrink-0 ml-2"
               >
                 <span>Inspect C03</span>
                 <ChevronRight className="h-3 w-3" />
@@ -268,8 +268,8 @@ All 26 unsupplied interactions retain intact review states without fabricated su
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
               <div className="flex items-center justify-between">
-                <span className="font-bold font-mono text-cyan-600">M04: Cedarwave</span>
-                <button onClick={() => openByRef('M04')} className="text-cyan-600 hover:underline text-[11px]">Inspect</button>
+                <span className="font-bold font-mono text-blue-600">M04: Cedarwave</span>
+                <button onClick={() => openByRef('M04')} className="text-blue-600 hover:underline text-[11px]">Inspect</button>
               </div>
               <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
                 Physical card merchant terminal rejections disrupting distribution operations. Programme migration to alternate network required.
@@ -278,8 +278,8 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
             <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
               <div className="flex items-center justify-between">
-                <span className="font-bold font-mono text-cyan-600">M09: Brookmint / Northkite</span>
-                <button onClick={() => openByRef('M09')} className="text-cyan-600 hover:underline text-[11px]">Inspect</button>
+                <span className="font-bold font-mono text-blue-600">M09: Brookmint / Northkite</span>
+                <button onClick={() => openByRef('M09')} className="text-blue-600 hover:underline text-[11px]">Inspect</button>
               </div>
               <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
                 Customer onboarding blocked by expired workspace invite token, plus receipt ledger sync failure in multi-entity setup.

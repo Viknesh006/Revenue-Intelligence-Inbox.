@@ -276,7 +276,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <RotateCcw className="h-5 w-5 text-cyan-600" />
+            <RotateCcw className="h-5 w-5 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900 dark:text-white">
               Deterministic Replay & Revision Engine
             </h2>
@@ -289,7 +289,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
         <button
           onClick={handleRunAllSteps}
           disabled={isRunningAll}
-          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md transition disabled:opacity-50 self-start sm:self-auto"
+          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md transition disabled:opacity-50 self-start sm:self-auto"
         >
           <Play className="h-4 w-4" />
           <span>{isRunningAll ? 'Executing Steps...' : 'Run All Replay Steps'}</span>
@@ -301,7 +301,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
         <div className="bg-slate-900 text-white p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
           <div className="space-y-1">
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-cyan-400 font-mono text-sm">M07 Live Status:</span>
+              <span className="font-bold text-blue-400 font-mono text-sm">M07 Live Status:</span>
               <span className="text-white font-semibold truncate max-w-sm">{m07.title_or_outcome}</span>
               <span className="px-2 py-0.5 rounded font-bold bg-slate-800 text-slate-200">
                 Revision {m07.applied_source_revision}
@@ -310,7 +310,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
             <div className="text-[11px] text-slate-400 flex flex-wrap items-center gap-3">
               <span>Turns: <strong className="text-emerald-400">{m07.transcript_payload?.turns?.length || 0}</strong></span>
               <span>•</span>
-              <span>Effective Routes: <strong className="text-cyan-300">{m07.effective_routes.join(', ')}</strong></span>
+              <span>Effective Routes: <strong className="text-blue-300">{m07.effective_routes.join(', ')}</strong></span>
               <span>•</span>
               <span>Manual Override: <strong className={m07.manual_decision.is_overridden ? 'text-purple-400' : 'text-slate-400'}>{m07.manual_decision.is_overridden ? 'ACTIVE (Preserved)' : 'NONE'}</strong></span>
             </div>
@@ -337,7 +337,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
                 : s.status === 'failed'
                 ? 'bg-rose-50 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800'
                 : s.status === 'running'
-                ? 'bg-cyan-50 dark:bg-cyan-950/30 border-cyan-300 dark:border-cyan-800 animate-pulse'
+                ? 'bg-blue-50 dark:bg-blue-950/30 border-blue-300 dark:border-blue-800 animate-pulse'
                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
             }`}
           >
@@ -445,7 +445,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-200 dark:border-slate-800">
           <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center space-x-1.5">
-            <Database className="h-4 w-4 text-cyan-600" />
+            <Database className="h-4 w-4 text-blue-600" />
             <span>Audit Import History</span>
           </h3>
         </div>
@@ -470,7 +470,7 @@ export const ReplayStudioTab: React.FC<ReplayStudioTabProps> = ({
                   <td className="py-2 px-3">v{h.revision}</td>
                   <td className="py-2 px-3 text-slate-500">{h.exported_at}</td>
                   <td className="py-2 px-3 text-emerald-600 font-bold">{h.inserted_count}</td>
-                  <td className="py-2 px-3 text-cyan-600 font-bold">{h.updated_count}</td>
+                  <td className="py-2 px-3 text-blue-600 font-bold">{h.updated_count}</td>
                   <td className="py-2 px-3 text-slate-400">{h.skipped_count}</td>
                   <td className="py-2 px-4 text-slate-600 dark:text-slate-400">{h.summary}</td>
                 </tr>

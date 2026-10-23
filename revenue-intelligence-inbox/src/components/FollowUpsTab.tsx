@@ -190,7 +190,7 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <CheckSquare className="h-5 w-5 text-cyan-600" />
+            <CheckSquare className="h-5 w-5 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900 dark:text-white">
               Actionable Follow-ups & Operational Commitments
             </h2>
@@ -211,7 +211,7 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
       {/* Filter Controls */}
       <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 font-medium">
-          <Filter className="h-3.5 w-3.5 text-cyan-600" />
+          <Filter className="h-3.5 w-3.5 text-blue-600" />
           <span>Filter Action Queue:</span>
         </div>
 
@@ -250,7 +250,7 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
                 setPriorityFilter('ALL');
                 setOwnerFilter('ALL');
               }}
-              className="text-cyan-600 hover:underline px-2 py-1"
+              className="text-blue-600 hover:underline px-2 py-1"
             >
               Reset Filters
             </button>
@@ -283,12 +283,12 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
                 <div className="flex items-start space-x-3">
                   <button
                     onClick={() => toggleComplete(item.id)}
-                    className="mt-0.5 text-slate-400 hover:text-cyan-600 transition"
+                    className="mt-0.5 text-slate-400 hover:text-blue-600 transition"
                   >
                     {isDone ? (
                       <CheckCircle2 className="h-5 w-5 text-emerald-600" />
                     ) : (
-                      <div className="h-5 w-5 rounded border-2 border-slate-300 dark:border-slate-600 hover:border-cyan-500" />
+                      <div className="h-5 w-5 rounded border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500" />
                     )}
                   </button>
 
@@ -321,7 +321,7 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
                       {item.action}
                     </p>
 
-                    <div className="bg-slate-100 dark:bg-slate-800/80 p-2 rounded-lg text-[11px] text-slate-700 dark:text-slate-300 italic border-l-2 border-cyan-500">
+                    <div className="bg-slate-100 dark:bg-slate-800/80 p-2 rounded-lg text-[11px] text-slate-700 dark:text-slate-300 italic border-l-2 border-blue-500">
                       Citation: {item.citation}
                     </div>
 
@@ -341,7 +341,7 @@ export const FollowUpsTab: React.FC<FollowUpsTabProps> = ({
                 {rec && (
                   <button
                     onClick={() => onOpenRecord(rec)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-600 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs flex items-center space-x-1 transition self-start"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs flex items-center space-x-1 transition self-start"
                     title="Inspect Source Record"
                   >
                     <span className="hidden sm:inline">Inspect Record</span>

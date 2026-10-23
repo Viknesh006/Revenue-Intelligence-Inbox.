@@ -65,13 +65,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-16">
           {/* Logo & Platform Info */}
           <div className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-md shadow-cyan-500/20">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20">
               <Layers className="h-5 w-5 text-white" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-lg tracking-tight text-white">SpendNest</span>
-                <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-cyan-900/60 text-cyan-300 border border-cyan-700/50">
+                <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-blue-900/60 text-blue-300 border border-blue-700/50">
                   Revenue Intelligence
                 </span>
               </div>
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Center Info / Local Reporting Date Context */}
           <div className="hidden lg:flex items-center space-x-4 bg-slate-800/80 px-3.5 py-1.5 rounded-lg border border-slate-700 text-xs">
             <div className="flex items-center text-slate-300 space-x-1.5">
-              <Calendar className="h-3.5 w-3.5 text-cyan-400" />
+              <Calendar className="h-3.5 w-3.5 text-blue-400" />
               <span className="font-semibold text-slate-100">21 August 2026</span>
               <span className="text-slate-400">(Asia/Kolkata)</span>
             </div>
@@ -101,13 +101,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
               title="Open Replay & Revision Test Studio"
             >
-              <RotateCcw className="h-3.5 w-3.5 text-cyan-400" />
+              <RotateCcw className="h-3.5 w-3.5 text-blue-400" />
               <span>Replay Test</span>
             </button>
 
             <button
               onClick={onQuickExport}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white shadow-sm transition"
+              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-sm transition"
               title="Download Complete Export Archive (ZIP)"
             >
               <Download className="h-3.5 w-3.5 text-white" />
@@ -129,15 +129,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onSelectTab(item.id as TabId)}
                 className={`flex items-center space-x-2 px-3.5 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
                   isActive
-                    ? 'bg-slate-800 text-cyan-300 shadow-sm border border-slate-700'
+                    ? 'bg-slate-800 text-blue-300 shadow-sm border border-slate-700'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
                 }`}
               >
-                <Icon className={`h-4 w-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                <Icon className={`h-4 w-4 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
                 {item.badge !== undefined && (
                   <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-semibold ${
-                    isActive ? 'bg-cyan-950 text-cyan-300 border border-cyan-800' : 'bg-slate-800 text-slate-400'
+                    isActive ? 'bg-blue-950 text-blue-300 border border-blue-800' : 'bg-slate-800 text-slate-400'
                   }`}>
                     {item.badge}
                   </span>

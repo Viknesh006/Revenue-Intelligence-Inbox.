@@ -47,20 +47,20 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             placeholder="Search conversations, accounts, reps..."
             onClick={onSearchFocus}
             readOnly
-            className="w-full pl-9 pr-12 py-2 bg-white rounded-xl text-xs text-slate-800 border border-slate-200 focus:outline-none hover:border-slate-300 cursor-pointer transition shadow-2xs"
+            className="w-full pl-9 pr-12 py-2 bg-slate-50 rounded-xl text-xs text-slate-700 border border-slate-200/70 focus:outline-none hover:bg-slate-100 cursor-pointer transition"
           />
-          <div className="absolute right-2.5 top-2 px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono text-slate-400 font-semibold shadow-2xs">
+          <div className="absolute right-2.5 top-2 px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] font-mono text-slate-400 font-semibold shadow-xs">
             ⌘K
           </div>
         </div>
       </div>
 
       {/* Center Date Range Selector (Matching Dribbble Jan 1 - Feb 1 pill) */}
-      <div className="hidden md:flex items-center space-x-2 bg-white border border-slate-200 px-3.5 py-1.5 rounded-xl text-xs shadow-2xs">
+      <div className="hidden md:flex items-center space-x-2 bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-xl text-xs">
         <Calendar className="h-3.5 w-3.5 text-blue-600" />
         <span className="font-semibold text-slate-800">21 August 2026</span>
         <span className="text-[11px] text-slate-400">(Asia/Kolkata)</span>
-        <div className="h-3 w-px bg-slate-200 mx-1" />
+        <div className="h-3 w-px bg-slate-300 mx-1" />
         <span className="text-[11px] font-semibold text-blue-600">Fixed Assessment Day</span>
       </div>
 
@@ -69,7 +69,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         {/* Replay Test Button */}
         <button
           onClick={onOpenReplay}
-          className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition shadow-2xs"
+          className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition"
         >
           <RotateCcw className="h-3.5 w-3.5 text-blue-600" />
           <span>Replay Test</span>
@@ -78,7 +78,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         {/* Add Widget Button (Matching Dribbble) */}
         <button
           onClick={onOpenWidgetModal}
-          className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition shadow-2xs"
+          className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition"
         >
           <Plus className="h-3.5 w-3.5 text-slate-600" />
           <span className="hidden sm:inline">Add Widget</span>

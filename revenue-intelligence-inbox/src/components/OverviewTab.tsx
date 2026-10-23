@@ -269,13 +269,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-1.5 bg-white border border-slate-200 p-1 rounded-xl text-xs shadow-2xs">
+              <div className="flex items-center space-x-1 bg-slate-50 border border-slate-200/80 p-1 rounded-xl text-xs">
                 <button
                   onClick={() => setActiveSegment('all')}
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'all'
                       ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   All (44)
@@ -285,7 +285,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'calls'
                       ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   Calls (30)
@@ -295,7 +295,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'meetings'
                       ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      : 'text-slate-500 hover:text-slate-900'
                   }`}
                 >
                   Meetings (14)
@@ -468,7 +468,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
             {/* Glowing 3D Orb Visual on Pure White Surface */}
             <div className="flex justify-center py-3">
               <div className="relative">
-                <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-blue-700 via-blue-500 to-cyan-300 shadow-xl shadow-blue-500/35 flex items-center justify-center animate-pulse">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-blue-700 via-blue-500 to-blue-300 shadow-xl shadow-blue-500/35 flex items-center justify-center animate-pulse">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
                 <div className="absolute -inset-1 rounded-full bg-blue-400/20 blur-md pointer-events-none" />

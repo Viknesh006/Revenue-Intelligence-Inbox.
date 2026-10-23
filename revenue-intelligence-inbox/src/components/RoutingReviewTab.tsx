@@ -51,7 +51,7 @@ export const RoutingReviewTab: React.FC<RoutingReviewTabProps> = ({
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <GitPullRequest className="h-5 w-5 text-cyan-600" />
+            <GitPullRequest className="h-5 w-5 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900 dark:text-white">
               Routing Governance & Human Review Queue
             </h2>
@@ -99,11 +99,11 @@ export const RoutingReviewTab: React.FC<RoutingReviewTabProps> = ({
           onClick={() => setSelectedSubTab('all_exceptions')}
           className={`px-3 py-1.5 rounded-lg flex items-center space-x-1.5 transition ${
             selectedSubTab === 'all_exceptions'
-              ? 'bg-cyan-100 text-cyan-900 dark:bg-cyan-950 dark:text-cyan-200 font-bold'
+              ? 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-200 font-bold'
               : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
         >
-          <GitPullRequest className="h-3.5 w-3.5 text-cyan-600" />
+          <GitPullRequest className="h-3.5 w-3.5 text-blue-600" />
           <span>All Human Review Routes ({allReviewRequired.length})</span>
         </button>
       </div>
@@ -202,7 +202,7 @@ export const RoutingReviewTab: React.FC<RoutingReviewTabProps> = ({
                         {r.effective_review_state}
                       </span>
                     </td>
-                    <td className="py-2.5 px-4 text-right text-cyan-600 font-semibold hover:underline">
+                    <td className="py-2.5 px-4 text-right text-blue-600 font-semibold hover:underline">
                       View
                     </td>
                   </tr>
@@ -220,7 +220,7 @@ export const RoutingReviewTab: React.FC<RoutingReviewTabProps> = ({
             <div
               key={r.source_id}
               onClick={() => onOpenRecord(r)}
-              className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-cyan-400 cursor-pointer shadow-sm transition flex items-center justify-between"
+              className="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 cursor-pointer shadow-sm transition flex items-center justify-between"
             >
               <div className="space-y-1">
                 <div className="flex items-center space-x-2">

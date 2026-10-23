@@ -24,7 +24,7 @@ export const MethodologyTab: React.FC = () => {
     <div className="space-y-8 pb-12 max-w-4xl mx-auto text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
       {/* Header */}
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <div className="flex items-center space-x-2 text-cyan-600 mb-1">
+        <div className="flex items-center space-x-2 text-blue-600 mb-1">
           <BookOpen className="h-5 w-5" />
           <h2 className="text-base font-bold text-slate-900 dark:text-white">
             Architecture, Methodology & Governance Documentation
@@ -59,7 +59,7 @@ export const MethodologyTab: React.FC = () => {
                 </span>
               </div>
 
-              <div className="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 font-mono text-[11px] text-cyan-800 dark:text-cyan-300 italic">
+              <div className="p-2.5 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 font-mono text-[11px] text-blue-800 dark:text-blue-300 italic">
                 Citation: {finding.citation}
               </div>
 
@@ -71,7 +71,7 @@ export const MethodologyTab: React.FC = () => {
                 <strong className="text-slate-800 dark:text-slate-200">Analytical Significance:</strong> {finding.significance}
               </p>
 
-              <div className="pt-1.5 text-[11px] text-cyan-700 dark:text-cyan-400 font-medium">
+              <div className="pt-1.5 text-[11px] text-blue-700 dark:text-blue-400 font-medium">
                 <strong>Product Influence:</strong> {finding.productImpact}
               </div>
             </div>
@@ -110,7 +110,7 @@ export const MethodologyTab: React.FC = () => {
       {/* Pre-Generated vs Dynamic Runtime Operations */}
       <section className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
         <div className="flex items-center space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-          <Code2 className="h-4 w-4 text-cyan-600" />
+          <Code2 className="h-4 w-4 text-blue-600" />
           <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
             Pre-Generated vs Dynamic Runtime Operations
           </h3>
@@ -144,7 +144,7 @@ export const MethodologyTab: React.FC = () => {
       {/* Hours Spent & Known Limitations */}
       <section className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
         <div className="flex items-center space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-          <Clock className="h-4 w-4 text-cyan-600" />
+          <Clock className="h-4 w-4 text-blue-600" />
           <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
             Hours Spent & Methodological Limitations
           </h3>

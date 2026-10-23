@@ -124,7 +124,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-400">
-                Composite Key: <code className="text-cyan-300">({record.source_type}, {record.source_id})</code>
+                Composite Key: <code className="text-blue-300">({record.source_type}, {record.source_id})</code>
               </p>
             </div>
           </div>
@@ -273,7 +273,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       placeholder="Search dialogue..."
                       value={searchTranscript}
                       onChange={(e) => setSearchTranscript(e.target.value)}
-                      className="text-xs px-2 py-1 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500 w-36"
+                      className="text-xs px-2 py-1 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500 w-36"
                     />
                   )}
                 </div>
@@ -303,7 +303,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                           className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/70 text-xs space-y-1 shadow-sm"
                         >
                           <div className="flex items-center justify-between text-[11px]">
-                            <span className="font-bold text-cyan-700 dark:text-cyan-400">
+                            <span className="font-bold text-blue-700 dark:text-blue-400">
                               Turn {idx + 1} • {turn.speaker}
                             </span>
                             <span className="text-slate-400 font-mono text-[10px]">{turn.timecode}</span>
@@ -345,7 +345,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 {!isEditingRoute ? (
                   <button
                     onClick={() => setIsEditingRoute(true)}
-                    className="text-xs font-semibold px-2.5 py-1 rounded bg-cyan-50 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800 hover:bg-cyan-100 transition"
+                    className="text-xs font-semibold px-2.5 py-1 rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-800 hover:bg-blue-100 transition"
                   >
                     Edit Route
                   </button>
@@ -416,7 +416,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                             onClick={() => toggleRouteSelection(category)}
                             className={`px-2.5 py-1.5 rounded-lg text-xs font-medium border text-left transition ${
                               isSelected
-                                ? 'bg-cyan-100 dark:bg-cyan-900/60 text-cyan-900 dark:text-cyan-200 border-cyan-500 font-bold'
+                                ? 'bg-blue-100 dark:bg-blue-900/60 text-blue-900 dark:text-blue-200 border-blue-500 font-bold'
                                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-slate-400'
                             }`}
                           >
@@ -436,7 +436,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                       value={overrideRationale}
                       onChange={(e) => setOverrideRationale(e.target.value)}
                       placeholder="Explain why this route is being modified..."
-                      className="w-full text-xs p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                      className="w-full text-xs p-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                   </div>
 
@@ -453,7 +453,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                     <button
                       type="button"
                       onClick={handleSave}
-                      className="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm"
+                      className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm"
                     >
                       <Save className="h-3.5 w-3.5" />
                       <span>Save Route Override</span>
@@ -467,15 +467,15 @@ export const DetailModal: React.FC<DetailModalProps> = ({
             {record.analysis ? (
               <div className="space-y-4">
                 <div className="flex items-center space-x-2 pb-2 border-b border-slate-200 dark:border-slate-800">
-                  <Sparkles className="h-4 w-4 text-cyan-600" />
+                  <Sparkles className="h-4 w-4 text-blue-600" />
                   <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
                     Executive Intelligence Analysis
                   </h4>
                 </div>
 
                 {/* Summary */}
-                <div className="p-3 bg-cyan-50/60 dark:bg-cyan-950/20 rounded-xl border border-cyan-200/80 dark:border-cyan-800/60 text-xs">
-                  <span className="font-bold text-cyan-900 dark:text-cyan-300 block mb-1">Summary</span>
+                <div className="p-3 bg-blue-50/60 dark:bg-blue-950/20 rounded-xl border border-blue-200/80 dark:border-blue-800/60 text-xs">
+                  <span className="font-bold text-blue-900 dark:text-blue-300 block mb-1">Summary</span>
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{record.analysis.summary}</p>
                 </div>
 
@@ -494,10 +494,10 @@ export const DetailModal: React.FC<DetailModalProps> = ({
                 {/* Ground Truth Supporting Evidence */}
                 <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1.5 text-xs">
                   <span className="font-bold text-slate-900 dark:text-slate-100 block">Ground-Truth Evidence Citation:</span>
-                  <blockquote className="p-2 bg-white dark:bg-slate-900 border-l-2 border-cyan-500 rounded text-slate-700 dark:text-slate-300 italic text-[11px] leading-relaxed">
+                  <blockquote className="p-2 bg-white dark:bg-slate-900 border-l-2 border-blue-500 rounded text-slate-700 dark:text-slate-300 italic text-[11px] leading-relaxed">
                     {record.analysis.key_evidence}
                   </blockquote>
-                  <span className="text-[10px] text-cyan-700 dark:text-cyan-400 font-mono font-medium block">
+                  <span className="text-[10px] text-blue-700 dark:text-blue-400 font-mono font-medium block">
                     Source Citation: {record.analysis.evidence_citation}
                   </span>
                 </div>

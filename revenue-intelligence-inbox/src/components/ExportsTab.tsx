@@ -80,7 +80,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <Download className="h-5 w-5 text-cyan-600" />
+            <Download className="h-5 w-5 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900 dark:text-white">
               Export Archive & Manifest Generator
             </h2>
@@ -95,7 +95,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
             onClick={handleDownloadManifestJson}
             className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold border border-slate-300 dark:border-slate-700 transition"
           >
-            <FileJson className="h-3.5 w-3.5 text-cyan-600" />
+            <FileJson className="h-3.5 w-3.5 text-blue-600" />
             <span>manifest.json</span>
           </button>
 
@@ -110,7 +110,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
           <button
             onClick={handleDownloadZip}
             disabled={isExportingZip}
-            className="flex items-center space-x-2 px-4 py-1.5 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white rounded-lg text-xs font-bold shadow-md transition disabled:opacity-50"
+            className="flex items-center space-x-2 px-4 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg text-xs font-bold shadow-md transition disabled:opacity-50"
           >
             <Download className="h-4 w-4" />
             <span>{isExportingZip ? 'Packaging ZIP...' : 'Download Complete ZIP'}</span>
@@ -124,7 +124,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
         <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col max-h-[600px] overflow-hidden">
           <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-3">
             <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center space-x-1.5">
-              <FolderTree className="h-4 w-4 text-cyan-600" />
+              <FolderTree className="h-4 w-4 text-blue-600" />
               <span>Archive Folder Structure</span>
             </span>
             <span className="text-[11px] font-semibold text-slate-400">
@@ -136,7 +136,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
             {Array.from(filesByFolder.entries()).map(([folder, files]) => (
               <div key={folder} className="space-y-1">
                 <div className="flex items-center space-x-1.5 text-slate-500 font-semibold text-[11px] uppercase tracking-wider px-1">
-                  <Folder className="h-3.5 w-3.5 text-cyan-500" />
+                  <Folder className="h-3.5 w-3.5 text-blue-500" />
                   <span>{folder}/</span>
                 </div>
                 <div className="space-y-0.5 pl-3 border-l border-slate-200 dark:border-slate-800">
@@ -150,12 +150,12 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
                         onClick={() => setSelectedFileIndex(idx)}
                         className={`w-full text-left px-2 py-1.5 rounded-lg flex items-center justify-between transition ${
                           isSelected
-                            ? 'bg-cyan-50 dark:bg-cyan-950/60 text-cyan-900 dark:text-cyan-200 font-bold border border-cyan-300 dark:border-cyan-800'
+                            ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 font-bold border border-blue-300 dark:border-blue-800'
                             : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900'
                         }`}
                       >
                         <span className="truncate max-w-[240px] text-[11px]">{fileName}</span>
-                        {isSelected && <ChevronRight className="h-3.5 w-3.5 text-cyan-600" />}
+                        {isSelected && <ChevronRight className="h-3.5 w-3.5 text-blue-600" />}
                       </button>
                     );
                   })}
@@ -190,7 +190,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div>
             <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center space-x-1.5">
-              <FileCode className="h-4 w-4 text-cyan-600" />
+              <FileCode className="h-4 w-4 text-blue-600" />
               <span>Manifest Table Preview (All 44 Records)</span>
             </h3>
             <p className="text-[11px] text-slate-500">
@@ -223,7 +223,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
                   <td className="py-2 px-3 capitalize">{m.source_type}</td>
                   <td className="py-2 px-3">v{m.applied_source_revision}</td>
                   <td className="py-2 px-3 max-w-xs truncate">{m.assigned_routes.join(', ')}</td>
-                  <td className="py-2 px-3 max-w-xs truncate font-mono text-[10px] text-cyan-700 dark:text-cyan-400">
+                  <td className="py-2 px-3 max-w-xs truncate font-mono text-[10px] text-blue-700 dark:text-blue-400">
                     {m.output_paths.join('; ')}
                   </td>
                   <td className="py-2 px-3">{m.review_state}</td>

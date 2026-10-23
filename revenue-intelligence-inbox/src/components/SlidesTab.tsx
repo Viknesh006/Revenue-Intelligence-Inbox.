@@ -179,7 +179,7 @@ export const SlidesTab: React.FC = () => {
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <Presentation className="h-5 w-5 text-cyan-600" />
+            <Presentation className="h-5 w-5 text-blue-600" />
             <h2 className="text-base font-bold text-slate-900 dark:text-white">
               Executive Five-Slide Presentation Deck
             </h2>
@@ -191,7 +191,7 @@ export const SlidesTab: React.FC = () => {
 
         <button
           onClick={handleDownloadPptx}
-          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md transition self-start sm:self-auto"
+          className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold shadow-md transition self-start sm:self-auto"
         >
           <Download className="h-4 w-4" />
           <span>Download PPTX File</span>
@@ -207,7 +207,7 @@ export const SlidesTab: React.FC = () => {
               onClick={() => setCurrentSlideIndex(idx)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 currentSlideIndex === idx
-                  ? 'bg-slate-900 text-white dark:bg-cyan-500 dark:text-slate-900 shadow-sm'
+                  ? 'bg-slate-900 text-white dark:bg-blue-500 dark:text-slate-900 shadow-sm'
                   : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 border border-slate-200 dark:border-slate-700'
               }`}
             >
@@ -240,13 +240,13 @@ export const SlidesTab: React.FC = () => {
       {/* Slide Preview Canvas (16:9 Presentation Aspect Ratio) */}
       <div className="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 border border-slate-800 shadow-2xl relative min-h-[460px] flex flex-col justify-between overflow-hidden">
         {/* Subtle Decorative Ambient Background Glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 space-y-6">
           {/* Slide Top Label */}
           <div className="flex items-center justify-between text-xs">
-            <span className="text-cyan-400 font-bold uppercase tracking-widest text-[10px]">
+            <span className="text-blue-400 font-bold uppercase tracking-widest text-[10px]">
               SpendNest Revenue Intelligence • Slide {currentSlide.slideNumber} of 5
             </span>
             <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
@@ -273,7 +273,7 @@ export const SlidesTab: React.FC = () => {
                   key={i}
                   className="p-3.5 bg-slate-800/60 rounded-xl border border-slate-700/60 text-xs text-slate-300 leading-relaxed space-y-0.5"
                 >
-                  <strong className="text-cyan-300 block font-semibold">{heading}:</strong>
+                  <strong className="text-blue-300 block font-semibold">{heading}:</strong>
                   <span>{desc}</span>
                 </div>
               );
@@ -291,7 +291,7 @@ export const SlidesTab: React.FC = () => {
       {/* Speaker Notes Box */}
       <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
         <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-          <FileText className="h-4 w-4 text-cyan-600" />
+          <FileText className="h-4 w-4 text-blue-600" />
           <span>Slide {currentSlide.slideNumber} Executive Narration & Speaker Notes</span>
         </div>
         <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed italic bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
