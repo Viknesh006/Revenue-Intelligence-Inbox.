@@ -153,7 +153,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
   return (
     <div className="space-y-4 pb-12">
       {/* Search and Filters Toolbar */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+      <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm space-y-3">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -271,7 +271,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
           <div className="pt-2 flex justify-end">
             <button
               onClick={clearAllFilters}
-              className="text-xs text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1"
+              className="text-xs text-blue-600 hover:underline flex items-center space-x-1"
             >
               <span>Reset all search & filters</span>
             </button>
@@ -280,14 +280,14 @@ export const InboxTab: React.FC<InboxTabProps> = ({
       </div>
 
       {/* Main Conversation Table */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+              <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase tracking-wider text-[10px]">
                 <th
                   onClick={() => toggleSort('ref')}
-                  className="py-3 px-4 cursor-pointer hover:text-slate-900 dark:hover:text-white"
+                  className="py-3 px-4 cursor-pointer hover:text-slate-900:text-white"
                 >
                   <div className="flex items-center space-x-1">
                     <span>Ref</span>
@@ -296,7 +296,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                 </th>
                 <th
                   onClick={() => toggleSort('type')}
-                  className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white"
+                  className="py-3 px-3 cursor-pointer hover:text-slate-900:text-white"
                 >
                   <div className="flex items-center space-x-1">
                     <span>Channel</span>
@@ -305,7 +305,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                 </th>
                 <th
                   onClick={() => toggleSort('person')}
-                  className="py-3 px-3 cursor-pointer hover:text-slate-900 dark:hover:text-white"
+                  className="py-3 px-3 cursor-pointer hover:text-slate-900:text-white"
                 >
                   <div className="flex items-center space-x-1">
                     <span>Person / Rep</span>
@@ -319,7 +319,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                 <th className="py-3 px-4 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {filteredRecords.length === 0 ? (
                 <tr>
                   <td colSpan={8} className="py-12 text-center text-slate-400">
@@ -333,16 +333,16 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                     <tr
                       key={`${r.source_type}:::${r.source_id}`}
                       onClick={() => onOpenRecord(r)}
-                      className="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 cursor-pointer transition"
+                      className="hover:bg-slate-50/80:bg-slate-800/50 cursor-pointer transition"
                     >
                       {/* Ref & Revision */}
                       <td className="py-3 px-4 whitespace-nowrap">
                         <div className="flex items-center space-x-1.5">
-                          <span className="font-bold text-slate-900 dark:text-slate-100 font-mono">
+                          <span className="font-bold text-slate-900 font-mono">
                             {r.record_ref}
                           </span>
                           {r.applied_source_revision > 1 && (
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800">
                               v{r.applied_source_revision}
                             </span>
                           )}
@@ -368,7 +368,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
 
                       {/* Person */}
                       <td className="py-3 px-3 whitespace-nowrap">
-                        <div className="font-medium text-slate-800 dark:text-slate-200">
+                        <div className="font-medium text-slate-800">
                           {r.person_name}
                         </div>
                         <div className="text-[10px] text-slate-400">
@@ -378,11 +378,11 @@ export const InboxTab: React.FC<InboxTabProps> = ({
 
                       {/* Title / Outcome */}
                       <td className="py-3 px-4 max-w-xs truncate">
-                        <span className="font-medium text-slate-900 dark:text-slate-100">
+                        <span className="font-medium text-slate-900">
                           {r.title_or_outcome}
                         </span>
                         {r.analysis?.summary && (
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                          <p className="text-[11px] text-slate-500 truncate mt-0.5">
                             {r.analysis.summary}
                           </p>
                         )}
@@ -403,7 +403,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                             );
                           })}
                           {r.manual_decision.is_overridden && (
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 flex items-center space-x-0.5">
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-purple-100 text-purple-800 flex items-center space-x-0.5">
                               <UserCheck className="h-2.5 w-2.5" />
                               <span>Override</span>
                             </span>
@@ -414,7 +414,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                       {/* Text Quality */}
                       <td className="py-3 px-3 whitespace-nowrap">
                         {r.has_usable_text ? (
-                          <span className="inline-flex items-center space-x-1 text-emerald-600 dark:text-emerald-400 font-medium text-[11px]">
+                          <span className="inline-flex items-center space-x-1 text-emerald-600 font-medium text-[11px]">
                             <FileCheck2 className="h-3.5 w-3.5" />
                             <span>Available</span>
                           </span>
@@ -430,10 +430,10 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                       <td className="py-3 px-3 whitespace-nowrap">
                         <span className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                           r.effective_review_state === 'reviewed'
-                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                            ? 'bg-emerald-50 text-emerald-700'
                             : r.effective_review_state.includes('bot') || r.effective_review_state.includes('speech')
-                            ? 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
-                            : 'bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300'
+                            ? 'bg-slate-100 text-slate-600'
+                            : 'bg-amber-50 text-amber-700'
                         }`}>
                           {r.effective_review_state}
                         </span>
@@ -446,7 +446,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
                             e.stopPropagation();
                             onOpenRecord(r);
                           }}
-                          className="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/60 hover:text-blue-600 text-slate-700 dark:text-slate-300 text-xs font-semibold inline-flex items-center space-x-1 transition"
+                          className="px-2.5 py-1 rounded bg-slate-100 hover:bg-blue-50:bg-blue-950/60 hover:text-blue-600 text-slate-700 text-xs font-semibold inline-flex items-center space-x-1 transition"
                         >
                           <Eye className="h-3.5 w-3.5" />
                           <span>Inspect</span>

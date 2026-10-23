@@ -90,16 +90,16 @@ export const AddWidgetModal: React.FC<AddWidgetModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-end p-4 sm:p-6 transition-all">
-      <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-md h-full max-h-[90vh] shadow-2xl border border-slate-200/80 dark:border-slate-800 flex flex-col overflow-hidden animate-in slide-in-from-right-10 duration-200">
+      <div className="bg-white rounded-3xl w-full max-w-md h-full max-h-[90vh] shadow-2xl border border-slate-200/80 flex flex-col overflow-hidden animate-in slide-in-from-right-10 duration-200">
         {/* Modal Header (Matching Dribbble Add Widget header) */}
-        <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Add Dashboard Widgets</h3>
+            <h3 className="text-base font-bold text-slate-900">Add Dashboard Widgets</h3>
             <p className="text-xs text-slate-400 mt-0.5">Customize your revenue intelligence workspace</p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 transition"
+            className="p-1.5 rounded-full hover:bg-slate-100:bg-slate-800 text-slate-400 hover:text-slate-600 transition"
           >
             <X className="h-5 w-5" />
           </button>
@@ -115,24 +115,24 @@ export const AddWidgetModal: React.FC<AddWidgetModalProps> = ({
                 key={widget.id}
                 className={`p-4 rounded-2xl border transition flex items-start justify-between gap-4 ${
                   isEnabled
-                    ? 'border-blue-200 bg-blue-50/40 dark:bg-blue-950/20 dark:border-blue-900/60 shadow-xs'
-                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300'
+                    ? 'border-blue-200 bg-blue-50/40 shadow-xs'
+                    : 'border-slate-200 bg-white hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-start space-x-3.5">
                   <div className={`p-2.5 rounded-xl ${
                     isEnabled
                       ? 'bg-blue-600 text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                      : 'bg-slate-100 text-slate-500'
                   }`}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <div className="space-y-1">
-                    <h4 className="font-bold text-slate-900 dark:text-white text-xs">{widget.title}</h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                    <h4 className="font-bold text-slate-900 text-xs">{widget.title}</h4>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">
                       {widget.description}
                     </p>
-                    <span className="inline-block text-[10px] font-semibold text-blue-600 dark:text-blue-400 bg-blue-100/60 dark:bg-blue-950 px-2 py-0.5 rounded-md mt-1">
+                    <span className="inline-block text-[10px] font-semibold text-blue-600 bg-blue-100/60 px-2 py-0.5 rounded-md mt-1">
                       {widget.tag}
                     </span>
                   </div>
@@ -143,7 +143,7 @@ export const AddWidgetModal: React.FC<AddWidgetModalProps> = ({
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex-shrink-0 ${
                     isEnabled
                       ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-xs'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-200'
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                   }`}
                 >
                   {isEnabled ? (
@@ -161,7 +161,7 @@ export const AddWidgetModal: React.FC<AddWidgetModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex items-center justify-between">
+        <div className="p-5 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
           <span className="text-xs text-slate-400">
             {Object.values(enabledWidgets).filter(Boolean).length} Active Widgets
           </span>

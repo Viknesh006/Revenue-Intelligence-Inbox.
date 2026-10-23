@@ -77,15 +77,15 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
   return (
     <div className="space-y-6 pb-12">
       {/* Header Banner */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
             <Download className="h-5 w-5 text-blue-600" />
-            <h2 className="text-base font-bold text-slate-900 dark:text-white">
+            <h2 className="text-base font-bold text-slate-900">
               Export Archive & Manifest Generator
             </h2>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Organized intelligence documents, daily executive brief, and machine-readable JSON/CSV manifest with verified relative paths.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           <button
             onClick={handleDownloadManifestJson}
-            className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold border border-slate-300 dark:border-slate-700 transition"
+            className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200:bg-slate-700 text-slate-700 rounded-lg text-xs font-semibold border border-slate-300 transition"
           >
             <FileJson className="h-3.5 w-3.5 text-blue-600" />
             <span>manifest.json</span>
@@ -101,7 +101,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
 
           <button
             onClick={handleDownloadManifestCsv}
-            className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold border border-slate-300 dark:border-slate-700 transition"
+            className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200:bg-slate-700 text-slate-700 rounded-lg text-xs font-semibold border border-slate-300 transition"
           >
             <FileSpreadsheet className="h-3.5 w-3.5 text-emerald-600" />
             <span>manifest.csv</span>
@@ -121,9 +121,9 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
       {/* Export Folder Explorer & File Previewer */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Folder Explorer */}
-        <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col max-h-[600px] overflow-hidden">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-3">
-            <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center space-x-1.5">
+        <div className="lg:col-span-5 bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col max-h-[600px] overflow-hidden">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-3">
+            <span className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
               <FolderTree className="h-4 w-4 text-blue-600" />
               <span>Archive Folder Structure</span>
             </span>
@@ -139,7 +139,7 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
                   <Folder className="h-3.5 w-3.5 text-blue-500" />
                   <span>{folder}/</span>
                 </div>
-                <div className="space-y-0.5 pl-3 border-l border-slate-200 dark:border-slate-800">
+                <div className="space-y-0.5 pl-3 border-l border-slate-200">
                   {files.map((file) => {
                     const idx = exportPackage.files.indexOf(file);
                     const isSelected = idx === selectedFileIndex;
@@ -150,8 +150,8 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
                         onClick={() => setSelectedFileIndex(idx)}
                         className={`w-full text-left px-2 py-1.5 rounded-lg flex items-center justify-between transition ${
                           isSelected
-                            ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 font-bold border border-blue-300 dark:border-blue-800'
-                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900'
+                            ? 'bg-blue-50 text-blue-900 font-bold border border-blue-300'
+                            : 'text-slate-600 hover:bg-slate-50:bg-slate-800/60 hover:text-slate-900'
                         }`}
                       >
                         <span className="truncate max-w-[240px] text-[11px]">{fileName}</span>
@@ -166,30 +166,30 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
         </div>
 
         {/* Right Column: File Content Previewer */}
-        <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col max-h-[600px] overflow-hidden">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-3">
+        <div className="lg:col-span-7 bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col max-h-[600px] overflow-hidden">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-3">
             <div>
-              <span className="text-xs font-bold text-slate-900 dark:text-white font-mono">
+              <span className="text-xs font-bold text-slate-900 font-mono">
                 {selectedFile?.path}
               </span>
               <p className="text-[11px] text-slate-500">{selectedFile?.description}</p>
             </div>
-            <span className="text-[10px] text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
+            <span className="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
               Active Export Output
             </span>
           </div>
 
-          <div className="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 whitespace-pre-wrap leading-relaxed">
+          <div className="flex-1 overflow-y-auto bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs font-mono text-slate-800 whitespace-pre-wrap leading-relaxed">
             {selectedFile?.content}
           </div>
         </div>
       </div>
 
       {/* Manifest Table Preview */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-slate-200 flex items-center justify-between">
           <div>
-            <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center space-x-1.5">
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
               <FileCode className="h-4 w-4 text-blue-600" />
               <span>Manifest Table Preview (All 44 Records)</span>
             </h3>
@@ -197,14 +197,14 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
               Verified relative output paths. Repeated exports preserve version integrity.
             </p>
           </div>
-          <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+          <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
             All Output Paths Verified
           </span>
         </div>
 
         <div className="overflow-x-auto max-h-80">
           <table className="w-full text-left text-[11px] border-collapse">
-            <thead className="bg-slate-50 dark:bg-slate-800/80 sticky top-0 text-slate-400 uppercase text-[10px]">
+            <thead className="bg-slate-50 sticky top-0 text-slate-400 uppercase text-[10px]">
               <tr>
                 <th className="py-2.5 px-3">Ref</th>
                 <th className="py-2.5 px-3">Type</th>
@@ -216,14 +216,14 @@ export const ExportsTab: React.FC<ExportsTabProps> = ({ records }) => {
                 <th className="py-2.5 px-3">Text Available</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {exportPackage.manifest.map((m) => (
-                <tr key={`${m.source_type}:::${m.source_id}`} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                <tr key={`${m.source_type}:::${m.source_id}`} className="hover:bg-slate-50/60:bg-slate-800/40">
                   <td className="py-2 px-3 font-mono font-bold">{m.record_ref}</td>
                   <td className="py-2 px-3 capitalize">{m.source_type}</td>
                   <td className="py-2 px-3">v{m.applied_source_revision}</td>
                   <td className="py-2 px-3 max-w-xs truncate">{m.assigned_routes.join(', ')}</td>
-                  <td className="py-2 px-3 max-w-xs truncate font-mono text-[10px] text-blue-700 dark:text-blue-400">
+                  <td className="py-2 px-3 max-w-xs truncate font-mono text-[10px] text-blue-700">
                     {m.output_paths.join('; ')}
                   </td>
                   <td className="py-2 px-3">{m.review_state}</td>

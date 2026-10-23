@@ -37,7 +37,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   const [showNotifications, setShowNotifications] = useState(false);
 
   return (
-    <header className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 px-6 flex items-center justify-between sticky top-0 z-20 shadow-xs">
+    <header className="h-16 bg-white border-b border-slate-200/80 px-6 flex items-center justify-between sticky top-0 z-20 shadow-xs">
       {/* Search Input Bar (Matching Dribbble Search with keyboard pill) */}
       <div className="flex items-center space-x-3 w-80 lg:w-96">
         <div className="relative w-full">
@@ -97,18 +97,18 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition relative"
+            className="p-2 rounded-xl text-slate-500 hover:text-slate-900:text-white hover:bg-slate-100:bg-slate-800 transition relative"
             title="Notifications"
           >
             <Bell className="h-4 w-4" />
-            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-slate-900" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white" />
           </button>
 
           {/* Notifications Dropdown */}
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 p-4 space-y-3 z-50 text-xs">
-              <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="font-bold text-slate-900 dark:text-white">Active Operational Alerts</span>
+            <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 space-y-3 z-50 text-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                <span className="font-bold text-slate-900">Active Operational Alerts</span>
                 <span className="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full font-bold">2 New</span>
               </div>
 
@@ -118,13 +118,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                     setShowNotifications(false);
                     onSelectTab('routing');
                   }}
-                  className="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800 cursor-pointer hover:bg-purple-100 transition space-y-1"
+                  className="p-2.5 rounded-xl bg-purple-50 border border-purple-200 cursor-pointer hover:bg-purple-100 transition space-y-1"
                 >
-                  <div className="flex items-center space-x-1 text-purple-900 dark:text-purple-200 font-bold">
+                  <div className="flex items-center space-x-1 text-purple-900 font-bold">
                     <AlertTriangle className="h-3.5 w-3.5 text-purple-600" />
                     <span>C06 Attribution Conflict</span>
                   </div>
-                  <p className="text-[11px] text-purple-800/80 dark:text-purple-300">
+                  <p className="text-[11px] text-purple-800/80">
                     Telephony rep is Meera, but caller introduced himself as Ravi.
                   </p>
                 </div>
@@ -134,13 +134,13 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                     setShowNotifications(false);
                     onSelectTab('routing');
                   }}
-                  className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 cursor-pointer hover:bg-emerald-100 transition space-y-1"
+                  className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 cursor-pointer hover:bg-emerald-100 transition space-y-1"
                 >
-                  <div className="flex items-center space-x-1 text-emerald-900 dark:text-emerald-200 font-bold">
+                  <div className="flex items-center space-x-1 text-emerald-900 font-bold">
                     <RefreshCw className="h-3.5 w-3.5 text-emerald-600" />
                     <span>M07 Revision 2 Applied</span>
                   </div>
-                  <p className="text-[11px] text-emerald-800/80 dark:text-emerald-300">
+                  <p className="text-[11px] text-emerald-800/80">
                     27 turns loaded for Willowfield Trust. Manual override preserved.
                   </p>
                 </div>

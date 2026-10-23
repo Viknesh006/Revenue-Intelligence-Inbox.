@@ -105,11 +105,11 @@ All 26 unsupplied interactions retain intact review states without fabricated su
       </div>
 
       {/* Main Brief Document Body */}
-      <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-sm space-y-8 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-8 text-xs text-slate-700 leading-relaxed">
         {/* Section 1: Daily Activity Overview */}
         <section className="space-y-2">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               1. Daily Sales & Customer Interaction Overview
             </span>
           </div>
@@ -120,27 +120,27 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 2: Call and Meeting Counts */}
         <section className="space-y-3">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               2. Interaction Volumes & Team Activity Breakdown
             </span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className="text-[10px] uppercase text-slate-400 font-semibold block">Total Selected</span>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">44 Records</span>
+              <span className="text-xl font-bold text-slate-900">44 Records</span>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className="text-[10px] uppercase text-slate-400 font-semibold block">Phone Calls</span>
-              <span className="text-xl font-bold text-blue-600 dark:text-blue-400">30 Dials</span>
+              <span className="text-xl font-bold text-blue-600">30 Dials</span>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className="text-[10px] uppercase text-slate-400 font-semibold block">Meetings</span>
-              <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">14 Sessions</span>
+              <span className="text-xl font-bold text-indigo-600">14 Sessions</span>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <span className="text-[10px] uppercase text-slate-400 font-semibold block">Coverage</span>
-              <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">18 Transcripts</span>
+              <span className="text-xl font-bold text-emerald-600">18 Transcripts</span>
             </div>
           </div>
           <p className="text-[11px] text-slate-500">
@@ -150,12 +150,12 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 3: Transcript Coverage & Data Limitations */}
         <section className="space-y-2">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               3. Transcript Coverage & Methodological Boundaries
             </span>
           </div>
-          <div className="p-3 bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-xl text-[11px] space-y-1 text-blue-900 dark:text-blue-200">
+          <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-[11px] space-y-1 text-blue-900">
             <p>
               <strong>Data Boundary:</strong> This dataset represents a selected assessment sample. Missing transcripts do NOT imply no interaction occurred, but in accordance with governance guidelines, no analytical summaries were fabricated for unsupplied records.
             </p>
@@ -167,19 +167,19 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 4: Most Important Conversations */}
         <section className="space-y-3">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               4. Key Conversations & Commercial Significance
             </span>
           </div>
           <div className="space-y-2.5">
-            <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
+            <div className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
                   <span className="font-bold font-mono text-blue-600">C07</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">Willowbank Advisory Referral Channel</span>
+                  <span className="font-semibold text-slate-900">Willowbank Advisory Referral Channel</span>
                 </div>
-                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                <p className="text-[11px] text-slate-600 mt-0.5">
                   Mr. Aditya confirmed active referrals for digital business accounts after company incorporation. Agreed to review proposal on messaging app with Monday follow-up.
                 </p>
               </div>
@@ -192,13 +192,13 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               </button>
             </div>
 
-            <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
+            <div className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
                   <span className="font-bold font-mono text-blue-600">M03</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">Asterloom Systems Enterprise Demo</span>
+                  <span className="font-semibold text-slate-900">Asterloom Systems Enterprise Demo</span>
                 </div>
-                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                <p className="text-[11px] text-slate-600 mt-0.5">
                   Walkthrough of corporate cards, ERP sync, and approvals with Customer A and Finance lead Customer B. Gating factor is economic justification with their CFO.
                 </p>
               </div>
@@ -211,13 +211,13 @@ All 26 unsupplied interactions retain intact review states without fabricated su
               </button>
             </div>
 
-            <div className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 flex items-start justify-between">
+            <div className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-start justify-between">
               <div>
                 <div className="flex items-center space-x-2">
                   <span className="font-bold font-mono text-blue-600">C03</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">Milan Developer API Access Pricing</span>
+                  <span className="font-semibold text-slate-900">Milan Developer API Access Pricing</span>
                 </div>
-                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
+                <p className="text-[11px] text-slate-600 mt-0.5">
                   Prospect stated API functionality is not essential enough for high spend. Agreed to receive tailored proposal with agreed subject line for Monday/Tuesday discussion.
                 </p>
               </div>
@@ -234,54 +234,54 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 5: Significant Customer or Product Issues */}
         <section className="space-y-3">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider text-rose-600 dark:text-rose-400">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider text-rose-600">
               5. Significant Product & Customer Quality Defects
             </span>
           </div>
 
-          <div className="p-4 bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-800/80 rounded-xl space-y-2">
+          <div className="p-4 bg-rose-50/70 border border-rose-200 rounded-xl space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-rose-900 dark:text-rose-200 flex items-center space-x-1.5">
+              <span className="font-bold text-rose-900 flex items-center space-x-1.5">
                 <AlertTriangle className="h-4 w-4 text-rose-600" />
                 <span>M07 (Willowfield Trust): 4 Severe Application Defects</span>
               </span>
               <button
                 onClick={() => openByRef('M07')}
-                className="text-xs font-semibold text-rose-700 dark:text-rose-300 hover:underline flex items-center space-x-0.5"
+                className="text-xs font-semibold text-rose-700 hover:underline flex items-center space-x-0.5"
               >
                 <span>Inspect M07</span>
                 <ChevronRight className="h-3 w-3" />
               </button>
             </div>
-            <ul className="list-disc pl-5 text-[11px] text-rose-950 dark:text-rose-300/90 space-y-1">
+            <ul className="list-disc pl-5 text-[11px] text-rose-950 space-y-1">
               <li><strong>Description Persistence Bug:</strong> Edits to event payment descriptions do not save upon clicking Save changes.</li>
               <li><strong>Attachment Failure in Recreate Payment:</strong> Document upload fails via direct recreation (workaround: Invoice Inbox Review).</li>
               <li><strong>Reimbursement Lockup:</strong> Batched payments stuck in &quot;Processing&quot; cannot be selected.</li>
               <li><strong>Modal State Amount Leakage:</strong> Cash disbursement modal retains previous amount (INR 18,200) instead of fetching next item value.</li>
             </ul>
-            <div className="text-[11px] text-rose-800 dark:text-rose-400 pt-1 font-semibold">
+            <div className="text-[11px] text-rose-800 pt-1 font-semibold">
               Crucial Principle (Turn 15): <em>&quot;The workaround does not mean the direct upload issue has been resolved.&quot;</em>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <div className="flex items-center justify-between">
                 <span className="font-bold font-mono text-blue-600">M04: Cedarwave</span>
                 <button onClick={() => openByRef('M04')} className="text-blue-600 hover:underline text-[11px]">Inspect</button>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-600 mt-1">
                 Physical card merchant terminal rejections disrupting distribution operations. Programme migration to alternate network required.
               </p>
             </div>
 
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
               <div className="flex items-center justify-between">
                 <span className="font-bold font-mono text-blue-600">M09: Brookmint / Northkite</span>
                 <button onClick={() => openByRef('M09')} className="text-blue-600 hover:underline text-[11px]">Inspect</button>
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-600 mt-1">
                 Customer onboarding blocked by expired workspace invite token, plus receipt ledger sync failure in multi-entity setup.
               </p>
             </div>
@@ -290,26 +290,26 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 6: Sales Coaching Observations */}
         <section className="space-y-3">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               6. Sales Coaching Observations
             </span>
           </div>
           <div className="space-y-2">
-            <div className="p-3 rounded-xl border border-amber-200 dark:border-amber-800/60 bg-amber-50/50 dark:bg-amber-950/20 text-[11px] space-y-1">
-              <strong className="text-amber-900 dark:text-amber-300 block">
+            <div className="p-3 rounded-xl border border-amber-200 bg-amber-50/50 text-[11px] space-y-1">
+              <strong className="text-amber-900 block">
                 1. Respecting Prospect Boundaries & Refusals (C10 & C09)
               </strong>
-              <p className="text-slate-700 dark:text-slate-300">
+              <p className="text-slate-700">
                 In <strong>C10</strong>, contact Aniket agreed to read a messaging brief, but when rep Meera pushed for a callback, he rebuffed: <em>&quot;No. I said I will contact you if there is anything to discuss.&quot;</em> In <strong>C09</strong>, contact Vedant gave an executive referral but explicitly warned: <em>&quot;No, please don&apos;t use my name.&quot;</em> Reps must honor boundaries.
               </p>
             </div>
 
-            <div className="p-3 rounded-xl border border-purple-200 dark:border-purple-800/60 bg-purple-50/50 dark:bg-purple-950/20 text-[11px] space-y-1">
-              <strong className="text-purple-900 dark:text-purple-300 block">
+            <div className="p-3 rounded-xl border border-purple-200 bg-purple-50/50 text-[11px] space-y-1">
+              <strong className="text-purple-900 block">
                 2. Telephony Credential Attribution (C06)
               </strong>
-              <p className="text-slate-700 dark:text-slate-300">
+              <p className="text-slate-700">
                 In <strong>C06</strong>, telephony records credited Meera, but the audio starts: <em>&quot;Good evening, Mr Nikhil. Good evening. Ravi here.&quot;</em> Sales Ops must audit dialer logins.
               </p>
             </div>
@@ -318,8 +318,8 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 7: Vendor & Internal Operations */}
         <section className="space-y-2">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               7. Vendor Procurement & Operational Coordination
             </span>
           </div>
@@ -330,14 +330,14 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 8: Priority Follow-up Actions Table */}
         <section className="space-y-3">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               8. Priority Follow-up Action Items
             </span>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-[11px] border border-slate-200 dark:border-slate-800 rounded-lg">
-              <thead className="bg-slate-50 dark:bg-slate-800 text-slate-500 font-semibold">
+            <table className="w-full text-left text-[11px] border border-slate-200 rounded-lg">
+              <thead className="bg-slate-50 text-slate-500 font-semibold">
                 <tr>
                   <th className="py-2 px-3">Priority</th>
                   <th className="py-2 px-3">Owner</th>
@@ -345,7 +345,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
                   <th className="py-2 px-3">Context</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-100">
                 <tr>
                   <td className="py-2 px-3 font-bold text-rose-600">P1 - Urgent</td>
                   <td className="py-2 px-3">Engineering / CS</td>
@@ -383,8 +383,8 @@ All 26 unsupplied interactions retain intact review states without fabricated su
 
         {/* Section 9: Items Requiring Human Review */}
         <section className="space-y-2">
-          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span className="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">
+          <div className="flex items-center space-x-2 pb-1 border-b border-slate-200">
+            <span className="font-bold text-sm text-slate-900 uppercase tracking-wider">
               9. Governance & Review Protocol
             </span>
           </div>
@@ -394,7 +394,7 @@ All 26 unsupplied interactions retain intact review states without fabricated su
         </section>
 
         {/* Section 10: Methodology Explanation */}
-        <section className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-[10px] text-slate-500">
+        <section className="space-y-2 pt-2 border-t border-slate-200 text-[10px] text-slate-500">
           <p>
             <strong>Analytical Methodology:</strong> All findings are strictly grounded in exact quotations or 1-based meeting turn references from the adapted SpendNest corpus. Speculative deal valuations, automated revenue extrapolations, and unsubstantiated account links were deliberately rejected to preserve governance integrity.
           </p>

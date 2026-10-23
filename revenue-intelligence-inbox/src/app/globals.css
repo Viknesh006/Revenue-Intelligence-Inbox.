@@ -32,8 +32,11 @@
   src: url('https://fonts.gstatic.com/s/googlesans/v71/4Ua_rENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RFD48TE63OOYKtrzjJ6li.ttf') format('truetype');
 }
 
+@custom-variant dark (&:where(.dark-disabled, .dark-disabled *));
+
 :root {
-  --background: #ffffff;
+  color-scheme: light;
+  --background: #f8fafc;
   --foreground: #0f172a;
 }
 

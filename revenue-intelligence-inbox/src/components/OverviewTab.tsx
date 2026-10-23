@@ -175,18 +175,18 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
       {/* 4 Top Metric Cards (Matching Dribbble: Page Views, Visitors, Click, Orders) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Total Interactions */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+        <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-sm transition">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Interactions</span>
-            <div className="h-7 w-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 flex items-center justify-center text-blue-600">
+            <span className="text-xs font-semibold text-slate-500">Total Interactions</span>
+            <div className="h-7 w-7 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
               <Eye className="h-4 w-4" />
             </div>
           </div>
           <div className="flex items-baseline space-x-2">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {totalRecords}
             </span>
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+            <span className="text-xs font-bold text-emerald-600 flex items-center">
               <TrendingUp className="h-3 w-3 mr-0.5" /> 100%
             </span>
           </div>
@@ -194,18 +194,18 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
 
         {/* Card 2: Usable Transcripts */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+        <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-sm transition">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Usable Transcripts</span>
-            <div className="h-7 w-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600">
+            <span className="text-xs font-semibold text-slate-500">Usable Transcripts</span>
+            <div className="h-7 w-7 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
               <FileCheck2 className="h-4 w-4" />
             </div>
           </div>
           <div className="flex items-baseline space-x-2">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               {usableTextCount}
             </span>
-            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+            <span className="text-xs font-bold text-emerald-600 flex items-center">
               <TrendingUp className="h-3 w-3 mr-0.5" /> {coveragePercent}%
             </span>
           </div>
@@ -213,18 +213,18 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
 
         {/* Card 3: Telephony Connection Rate */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+        <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-sm transition">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Telephony Connects</span>
-            <div className="h-7 w-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600">
+            <span className="text-xs font-semibold text-slate-500">Telephony Connects</span>
+            <div className="h-7 w-7 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
               <Phone className="h-4 w-4" />
             </div>
           </div>
           <div className="flex items-baseline space-x-2">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               46.7%
             </span>
-            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+            <span className="text-xs font-bold text-indigo-600 flex items-center">
               14 / 30 Dials
             </span>
           </div>
@@ -232,18 +232,18 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         </div>
 
         {/* Card 4: Action Items */}
-        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+        <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-sm transition">
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Action Commitments</span>
-            <div className="h-7 w-7 rounded-lg bg-amber-50 dark:bg-amber-950/60 flex items-center justify-center text-amber-600">
+            <span className="text-xs font-semibold text-slate-500">Action Commitments</span>
+            <div className="h-7 w-7 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600">
               <ShieldAlert className="h-4 w-4" />
             </div>
           </div>
           <div className="flex items-baseline space-x-2">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               13
             </span>
-            <span className="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center">
+            <span className="text-xs font-bold text-rose-600 flex items-center">
               2 P1 Urgent
             </span>
           </div>
@@ -254,16 +254,16 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
       {/* Main Two Column Row (Matching Dribbble: Left Main Chart + Right Side Widgets) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column (8 cols): Total Profit / Interaction Volume Area Chart */}
-        <div className="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-8 bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-6">
           <div>
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs font-semibold text-slate-400">Interaction Volume by Time</span>
                 <div className="flex items-baseline space-x-3 mt-1">
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                     44 Interactions
                   </h3>
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+                  <span className="text-xs font-bold text-emerald-600 flex items-center">
                     <TrendingUp className="h-3.5 w-3.5 mr-0.5" /> 21 Aug 2026
                   </span>
                 </div>
@@ -325,13 +325,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 p-3 rounded-2xl text-xs shadow-xl border border-slate-200/80 dark:border-slate-700 space-y-1">
-                            <span className="font-bold text-blue-600 dark:text-blue-400 block">{d.label} (Asia/Kolkata)</span>
-                            <div className="flex items-center justify-between space-x-4 text-slate-600 dark:text-slate-300">
+                          <div className="bg-white text-slate-800 p-3 rounded-2xl text-xs shadow-xl border border-slate-200/80 space-y-1">
+                            <span className="font-bold text-blue-600 block">{d.label} (Asia/Kolkata)</span>
+                            <div className="flex items-center justify-between space-x-4 text-slate-600">
                               <span>Total Volume:</span>
-                              <strong className="text-slate-900 dark:text-white">{d.total}</strong>
+                              <strong className="text-slate-900">{d.total}</strong>
                             </div>
-                            <div className="flex items-center justify-between space-x-4 text-slate-500 dark:text-slate-400 text-[11px]">
+                            <div className="flex items-center justify-between space-x-4 text-slate-500 text-[11px]">
                               <span>Calls: {d.calls} • Meetings: {d.meetings}</span>
                             </div>
                           </div>
@@ -376,13 +376,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         {/* Right Column (4 cols): Three Stacked Modern Widgets */}
         <div className="lg:col-span-4 space-y-5">
           {/* Widget 1: Most Active Rep (Matching Dribbble "Most Day Active" Bar Chart) */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-bold text-xs text-slate-900 dark:text-white">Most Active Rep</h4>
+                <h4 className="font-bold text-xs text-slate-900">Most Active Rep</h4>
                 <p className="text-[11px] text-slate-400">Interaction distribution across callers</p>
               </div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-600">
                 Arun (15)
               </span>
             </div>
@@ -397,7 +397,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 px-3 py-1.5 rounded-xl text-[11px] shadow-lg border border-slate-200/80 dark:border-slate-700">
+                          <div className="bg-white text-slate-800 px-3 py-1.5 rounded-xl text-[11px] shadow-lg border border-slate-200/80">
                             <strong>{d.name}</strong>: {d.count} dials
                           </div>
                         );
@@ -416,9 +416,9 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
           </div>
 
           {/* Widget 2: Transcript Coverage Gauge (Matching Dribbble "Repeat Customer Rate 68%") */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col items-center justify-center space-y-2 text-center">
+          <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-xs flex flex-col items-center justify-center space-y-2 text-center">
             <div className="w-full flex items-center justify-between pb-1">
-              <h4 className="font-bold text-xs text-slate-900 dark:text-white">Transcript Coverage Rate</h4>
+              <h4 className="font-bold text-xs text-slate-900">Transcript Coverage Rate</h4>
               <MoreHorizontal className="h-4 w-4 text-slate-400" />
             </div>
 
@@ -443,24 +443,24 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 />
               </svg>
               <div className="absolute top-10 flex flex-col items-center">
-                <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{coveragePercent}%</span>
+                <span className="text-2xl font-extrabold text-slate-900">{coveragePercent}%</span>
                 <span className="text-[10px] text-slate-400 font-semibold">18 / 44 Captures</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+            <p className="text-[11px] text-slate-500 pt-1">
               On track for qualitative synthesis post-update.
             </p>
           </div>
 
           {/* Widget 3: AI Assistant / Copilot (Matching Dribbble "AI Assistant" with Floating Orb on Pure White Card) */}
-          <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3 relative overflow-hidden">
+          <div className="bg-white text-slate-900 rounded-3xl p-5 border border-slate-200/80 shadow-xs space-y-3 relative overflow-hidden">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Bot className="h-4 w-4 text-blue-600" />
-                <h4 className="font-bold text-xs text-slate-900 dark:text-white">AI Revenue Copilot</h4>
+                <h4 className="font-bold text-xs text-slate-900">AI Revenue Copilot</h4>
               </div>
-              <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+              <span className="text-[10px] text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
                 Live Grounded
               </span>
             </div>
@@ -476,7 +476,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
             </div>
 
             {aiAnswer ? (
-              <div className="p-3 bg-blue-50/70 dark:bg-slate-800/80 rounded-xl text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed border border-blue-100 dark:border-slate-700 space-y-1">
+              <div className="p-3 bg-blue-50/70 rounded-xl text-[11px] text-slate-700 leading-relaxed border border-blue-100 space-y-1">
                 <p>{aiAnswer}</p>
                 <button
                   onClick={() => setAiAnswer(null)}
@@ -494,7 +494,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 placeholder="Ask about M07, C06, or partners..."
                 value={aiQuery}
                 onChange={(e) => setAiQuery(e.target.value)}
-                className="w-full text-xs pl-3.5 pr-8 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+                className="w-full text-xs pl-3.5 pr-8 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
               <button
                 type="submit"
@@ -508,10 +508,10 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
       </div>
 
       {/* Lower Section: High Priority Conversations Table (Matching Dribbble "Best Selling Products") */}
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+      <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-100">
           <div>
-            <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+            <h3 className="font-bold text-sm text-slate-900">
               High Priority Interaction Accounts & Evidence
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
@@ -521,7 +521,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
 
           <button
             onClick={() => onNavigateToInbox()}
-            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1"
+            className="text-xs font-bold text-blue-600 hover:underline flex items-center space-x-1"
           >
             <span>View All 44 Records</span>
             <ChevronRight className="h-3.5 w-3.5" />
@@ -531,7 +531,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="text-slate-400 uppercase text-[10px] border-b border-slate-100 dark:border-slate-800 pb-2">
+              <tr className="text-slate-400 uppercase text-[10px] border-b border-slate-100 pb-2">
                 <th className="py-2.5 px-3">Ref ID</th>
                 <th className="py-2.5 px-3">Account & Contact</th>
                 <th className="py-2.5 px-3">Channel</th>
@@ -541,22 +541,22 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 <th className="py-2.5 px-3 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+            <tbody className="divide-y divide-slate-100 text-slate-700">
               {priorityInteractions.map((item) => (
                 <tr
                   key={item.ref}
                   onClick={() => item.record && onOpenRecord(item.record)}
-                  className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 cursor-pointer transition"
+                  className="hover:bg-slate-50/80:bg-slate-800/40 cursor-pointer transition"
                 >
-                  <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">
+                  <td className="py-3 px-3 font-mono font-bold text-slate-900">
                     #{item.ref}
                   </td>
                   <td className="py-3 px-3">
-                    <span className="font-bold text-slate-900 dark:text-white block">{item.name}</span>
+                    <span className="font-bold text-slate-900 block">{item.name}</span>
                     <span className="text-[11px] text-slate-400">{item.contact}</span>
                   </td>
                   <td className="py-3 px-3">
-                    <span className="capitalize inline-flex items-center space-x-1 text-slate-600 dark:text-slate-300">
+                    <span className="capitalize inline-flex items-center space-x-1 text-slate-600">
                       {item.channel === 'call' ? (
                         <Phone className="h-3 w-3 text-blue-500" />
                       ) : (
@@ -566,12 +566,12 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                     </span>
                   </td>
                   <td className="py-3 px-3">
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
                       {item.route}
                     </span>
                   </td>
                   <td className="py-3 px-3">
-                    <span className="font-semibold text-slate-800 dark:text-slate-200 block text-xs">
+                    <span className="font-semibold text-slate-800 block text-xs">
                       {item.status}
                     </span>
                     <span className="text-[11px] text-slate-400">{item.highlight}</span>
@@ -588,7 +588,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                         e.stopPropagation();
                         if (item.record) onOpenRecord(item.record);
                       }}
-                      className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-600 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 transition"
+                      className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-xs font-semibold text-slate-700 transition"
                     >
                       Inspect
                     </button>

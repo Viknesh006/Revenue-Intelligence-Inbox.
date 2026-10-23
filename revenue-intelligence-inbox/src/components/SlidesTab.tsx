@@ -176,15 +176,15 @@ export const SlidesTab: React.FC = () => {
   return (
     <div className="space-y-6 pb-12 max-w-5xl mx-auto">
       {/* Header Banner */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
             <Presentation className="h-5 w-5 text-blue-600" />
-            <h2 className="text-base font-bold text-slate-900 dark:text-white">
+            <h2 className="text-base font-bold text-slate-900">
               Executive Five-Slide Presentation Deck
             </h2>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-500 mt-1">
             Exact five slides addressing product overview, findings with citations, routing decisions, replay integrity, and trade-offs.
           </p>
         </div>
@@ -207,8 +207,8 @@ export const SlidesTab: React.FC = () => {
               onClick={() => setCurrentSlideIndex(idx)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 currentSlideIndex === idx
-                  ? 'bg-slate-900 text-white dark:bg-blue-500 dark:text-slate-900 shadow-sm'
-                  : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 border border-slate-200 dark:border-slate-700'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
               }`}
             >
               Slide {s.slideNumber}
@@ -220,17 +220,17 @@ export const SlidesTab: React.FC = () => {
           <button
             onClick={() => setCurrentSlideIndex(Math.max(0, currentSlideIndex - 1))}
             disabled={currentSlideIndex === 0}
-            className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 disabled:opacity-40 hover:bg-slate-50 transition"
+            className="p-1.5 rounded-lg border border-slate-200 bg-white disabled:opacity-40 hover:bg-slate-50 transition"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
-          <span className="font-semibold text-slate-700 dark:text-slate-300">
+          <span className="font-semibold text-slate-700">
             {currentSlideIndex + 1} / {slides.length}
           </span>
           <button
             onClick={() => setCurrentSlideIndex(Math.min(slides.length - 1, currentSlideIndex + 1))}
             disabled={currentSlideIndex === slides.length - 1}
-            className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 disabled:opacity-40 hover:bg-slate-50 transition"
+            className="p-1.5 rounded-lg border border-slate-200 bg-white disabled:opacity-40 hover:bg-slate-50 transition"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -289,12 +289,12 @@ export const SlidesTab: React.FC = () => {
       </div>
 
       {/* Speaker Notes Box */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
-        <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+      <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm space-y-2">
+        <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 uppercase tracking-wider">
           <FileText className="h-4 w-4 text-blue-600" />
           <span>Slide {currentSlide.slideNumber} Executive Narration & Speaker Notes</span>
         </div>
-        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed italic bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+        <p className="text-xs text-slate-600 leading-relaxed italic bg-slate-50 p-3.5 rounded-xl border border-slate-200">
           &quot;{currentSlide.speakerNotes}&quot;
         </p>
       </div>
