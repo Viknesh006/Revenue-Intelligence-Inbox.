@@ -110,7 +110,7 @@ export default function Home() {
   ).length;
 
   return (
-    <div className="flex h-screen w-full bg-[#f8fafc] dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <div className="flex h-screen w-full bg-white text-slate-900 overflow-hidden font-sans antialiased selection:bg-blue-600 selection:text-white">
       {/* Shopeers-style Left Navigation Sidebar */}
       <Sidebar
         activeTab={activeTab}
@@ -124,7 +124,7 @@ export default function Home() {
       />
 
       {/* Main Column */}
-      <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden bg-white">
         {/* Top Header with Search, Date, Notifications, Add Widget & Export */}
         <TopHeader
           activeTab={activeTab}
@@ -138,7 +138,7 @@ export default function Home() {
         />
 
         {/* Scrollable Main Content Canvas */}
-        <main className="flex-1 overflow-y-auto px-6 py-6 scrollbar-thin">
+        <main className="flex-1 overflow-y-auto px-6 py-6 scrollbar-thin bg-white">
           <div className="max-w-7xl mx-auto space-y-6">
             {activeTab === 'overview' && (
               <OverviewTab

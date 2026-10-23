@@ -163,14 +163,14 @@ export const InboxTab: React.FC<InboxTabProps> = ({
               placeholder="Search by ref (C01, M07), title, person, summary, or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full text-xs pl-9 pr-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              className="w-full text-xs pl-9 pr-4 py-2 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-2xs"
             />
           </div>
 
           {/* Quick Counter */}
-          <div className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400">
+          <div className="flex items-center space-x-2 text-xs text-slate-500">
             <span>Showing:</span>
-            <strong className="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
+            <strong className="text-slate-900 bg-white border border-slate-200 px-2 py-0.5 rounded shadow-2xs">
               {filteredRecords.length} / {records.length}
             </strong>
           </div>
@@ -186,7 +186,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
             <select
               value={sourceTypeFilter}
               onChange={(e) => setSourceTypeFilter(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1.5 text-slate-800 dark:text-slate-200"
+              className="w-full text-xs rounded-lg border border-slate-200 bg-white p-1.5 text-slate-800 shadow-2xs focus:outline-none"
             >
               <option value="ALL">All Channels</option>
               <option value="call">Calls (30)</option>
@@ -202,7 +202,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
             <select
               value={personFilter}
               onChange={(e) => setPersonFilter(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1.5 text-slate-800 dark:text-slate-200"
+              className="w-full text-xs rounded-lg border border-slate-200 bg-white p-1.5 text-slate-800 shadow-2xs focus:outline-none"
             >
               <option value="ALL">All Representatives & Organizers</option>
               {personList.map((p) => (
@@ -221,7 +221,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
             <select
               value={routeFilter}
               onChange={(e) => setRouteFilter(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1.5 text-slate-800 dark:text-slate-200"
+              className="w-full text-xs rounded-lg border border-slate-200 bg-white p-1.5 text-slate-800 shadow-2xs focus:outline-none"
             >
               <option value="ALL">All Routes</option>
               {ROUTE_CATEGORIES.map((cat) => (
@@ -240,7 +240,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
             <select
               value={transcriptFilter}
               onChange={(e) => setTranscriptFilter(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1.5 text-slate-800 dark:text-slate-200"
+              className="w-full text-xs rounded-lg border border-slate-200 bg-white p-1.5 text-slate-800 shadow-2xs focus:outline-none"
             >
               <option value="ALL">All Text States</option>
               <option value="YES">Usable Text Supplied ({records.filter((r) => r.has_usable_text).length})</option>
@@ -256,7 +256,7 @@ export const InboxTab: React.FC<InboxTabProps> = ({
             <select
               value={reviewFilter}
               onChange={(e) => setReviewFilter(e.target.value)}
-              className="w-full text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-1.5 text-slate-800 dark:text-slate-200"
+              className="w-full text-xs rounded-lg border border-slate-200 bg-white p-1.5 text-slate-800 shadow-2xs focus:outline-none"
             >
               <option value="ALL">All Review States</option>
               <option value="REVIEWED">Analysis Completed (18)</option>

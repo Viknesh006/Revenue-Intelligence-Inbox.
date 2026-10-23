@@ -269,13 +269,13 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-800 p-1 rounded-xl text-xs">
+              <div className="flex items-center space-x-1.5 bg-white border border-slate-200 p-1 rounded-xl text-xs shadow-2xs">
                 <button
                   onClick={() => setActiveSegment('all')}
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'all'
-                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
-                      : 'text-slate-500 hover:text-slate-900'
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   All (44)
@@ -284,8 +284,8 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   onClick={() => setActiveSegment('calls')}
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'calls'
-                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
-                      : 'text-slate-500 hover:text-slate-900'
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   Calls (30)
@@ -294,8 +294,8 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   onClick={() => setActiveSegment('meetings')}
                   className={`px-3 py-1 rounded-lg font-semibold transition ${
                     activeSegment === 'meetings'
-                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
-                      : 'text-slate-500 hover:text-slate-900'
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   Meetings (14)
@@ -354,20 +354,20 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
           </div>
 
           {/* Sub-cards Row (Matching Dribbble "Customers 2,884, 1,432, 562") */}
-          <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+          <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100">
+            <div className="p-3 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
               <span className="text-[11px] font-semibold text-slate-400 block">Outbound Dials</span>
-              <span className="text-lg font-bold text-blue-600 dark:text-blue-400 mt-0.5 block">30 Calls</span>
+              <span className="text-lg font-bold text-blue-600 mt-0.5 block">30 Calls</span>
               <span className="text-[10px] text-slate-400">10 with dialogue</span>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+            <div className="p-3 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
               <span className="text-[11px] font-semibold text-slate-400 block">Calendar Sessions</span>
-              <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 block">14 Meetings</span>
+              <span className="text-lg font-bold text-emerald-600 mt-0.5 block">14 Meetings</span>
               <span className="text-[10px] text-slate-400">8 with dialogue</span>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+            <div className="p-3 bg-white rounded-2xl border border-slate-200/80 shadow-2xs">
               <span className="text-[11px] font-semibold text-slate-400 block">Active Revision</span>
-              <span className="text-lg font-bold text-purple-600 dark:text-purple-400 mt-0.5 block">Revision 2</span>
+              <span className="text-lg font-bold text-purple-600 mt-0.5 block">Revision 2</span>
               <span className="text-[10px] text-slate-400">M07 updated</span>
             </div>
           </div>

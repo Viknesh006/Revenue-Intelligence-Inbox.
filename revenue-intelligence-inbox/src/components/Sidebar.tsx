@@ -92,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </div>
                 {item.badge !== undefined && (
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                    isActive ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                    isActive ? 'bg-blue-600 text-white' : 'bg-white border border-slate-200 text-slate-600 shadow-2xs'
                   }`}>
                     {item.badge}
                   </span>
