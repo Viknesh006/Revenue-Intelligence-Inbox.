@@ -4,7 +4,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { UnifiedRecord, RouteCategory, ReviewState, BatchImportResult } from '@/types/intelligence';
 import { getDataEngine } from '@/lib/dataEngine';
 import { downloadZipPackage } from '@/lib/exportEngine';
-import { Navbar, TabId } from '@/components/Navbar';
+import { TabId } from '@/components/Navbar';
+import { Sidebar } from '@/components/Sidebar';
+import { TopHeader } from '@/components/TopHeader';
+import { AddWidgetModal } from '@/components/AddWidgetModal';
 import { OverviewTab } from '@/components/OverviewTab';
 import { InboxTab } from '@/components/InboxTab';
 import { FollowUpsTab } from '@/components/FollowUpsTab';
@@ -21,6 +24,14 @@ export default function Home() {
   const [records, setRecords] = useState<UnifiedRecord[]>([]);
   const [history, setHistory] = useState<BatchImportResult[]>([]);
   const [selectedRecord, setSelectedRecord] = useState<UnifiedRecord | null>(null);
+  const [isAddWidgetOpen, setIsAddWidgetOpen] = useState(false);
+  const [enabledWidgets, setEnabledWidgets] = useState<Record<string, boolean>>({
+    timeline: true,
+    repActivity: true,
+    coverageGauge: true,
+    aiAssistant: true,
+    priorityAccounts: true,
+  });
   const [inboxInitialFilters, setInboxInitialFilters] = useState<{
     person?: string;
     sourceType?: string;
@@ -85,84 +96,114 @@ export default function Home() {
     }
   };
 
+  const handleToggleWidget = (widgetId: string) => {
+    setEnabledWidgets((prev) => ({
+      ...prev,
+      [widgetId]: prev[widgetId] !== undefined ? !prev[widgetId] : false,
+    }));
+  };
+
   // Derive counts
   const totalRecords = records.length;
-  const usableTexts = records.filter((r) => r.has_usable_text).length;
   const reviewCount = records.filter(
     (r) => r.effective_routes.includes('Human Review Required') || r.effective_review_state !== 'reviewed'
   ).length;
 
   return (
-    <div className="min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-white">
-      {/* Dark Navy Executive Navigation */}
-      <Navbar
+    <div className="flex h-screen w-full bg-[#f8fafc] dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden font-sans antialiased selection:bg-blue-600 selection:text-white">
+      {/* Shopeers-style Left Navigation Sidebar */}
+      <Sidebar
         activeTab={activeTab}
         onSelectTab={(tab) => {
           setActiveTab(tab);
           if (tab !== 'inbox') setInboxInitialFilters(undefined);
         }}
         totalRecords={totalRecords}
-        usableTexts={usableTexts}
         reviewCount={reviewCount}
-        onQuickExport={handleQuickExportZip}
         onOpenReplay={() => setActiveTab('replay')}
       />
 
-      {/* Main Workspace Viewport */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {activeTab === 'overview' && (
-          <OverviewTab
-            records={records}
-            onNavigateToInbox={handleNavigateToInboxWithFilter}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-          />
-        )}
+      {/* Main Column */}
+      <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
+        {/* Top Header with Search, Date, Notifications, Add Widget & Export */}
+        <TopHeader
+          activeTab={activeTab}
+          onSelectTab={setActiveTab}
+          onSearchFocus={() => {
+            setActiveTab('inbox');
+          }}
+          onOpenWidgetModal={() => setIsAddWidgetOpen(true)}
+          onQuickExport={handleQuickExportZip}
+          onOpenReplay={() => setActiveTab('replay')}
+        />
 
-        {activeTab === 'inbox' && (
-          <InboxTab
-            records={records}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-            initialFilters={inboxInitialFilters}
-          />
-        )}
+        {/* Scrollable Main Content Canvas */}
+        <main className="flex-1 overflow-y-auto px-6 py-6 scrollbar-thin">
+          <div className="max-w-7xl mx-auto space-y-6">
+            {activeTab === 'overview' && (
+              <OverviewTab
+                records={records}
+                onNavigateToInbox={handleNavigateToInboxWithFilter}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+                enabledWidgets={enabledWidgets}
+              />
+            )}
 
-        {activeTab === 'followups' && (
-          <FollowUpsTab
-            records={records}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-          />
-        )}
+            {activeTab === 'inbox' && (
+              <InboxTab
+                records={records}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+                initialFilters={inboxInitialFilters}
+              />
+            )}
 
-        {activeTab === 'routing' && (
-          <RoutingReviewTab
-            records={records}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-            onUpdateRoute={handleSaveManualRoute}
-          />
-        )}
+            {activeTab === 'followups' && (
+              <FollowUpsTab
+                records={records}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+              />
+            )}
 
-        {activeTab === 'brief' && (
-          <ManagerBriefTab
-            records={records}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-          />
-        )}
+            {activeTab === 'routing' && (
+              <RoutingReviewTab
+                records={records}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+                onUpdateRoute={handleSaveManualRoute}
+              />
+            )}
 
-        {activeTab === 'exports' && <ExportsTab records={records} />}
+            {activeTab === 'brief' && (
+              <ManagerBriefTab
+                records={records}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+              />
+            )}
 
-        {activeTab === 'replay' && (
-          <ReplayStudioTab
-            records={records}
-            history={history}
-            onRefreshRecords={refreshFromEngine}
-            onOpenRecord={(r) => setSelectedRecord(r)}
-          />
-        )}
+            {activeTab === 'exports' && <ExportsTab records={records} />}
 
-        {activeTab === 'slides' && <SlidesTab />}
+            {activeTab === 'replay' && (
+              <ReplayStudioTab
+                records={records}
+                history={history}
+                onRefreshRecords={refreshFromEngine}
+                onOpenRecord={(r) => setSelectedRecord(r)}
+              />
+            )}
 
-        {activeTab === 'methodology' && <MethodologyTab />}
-      </main>
+            {activeTab === 'slides' && <SlidesTab />}
+
+            {activeTab === 'methodology' && <MethodologyTab />}
+          </div>
+        </main>
+      </div>
+
+      {/* Add Widget Slideover Drawer */}
+      <AddWidgetModal
+        isOpen={isAddWidgetOpen}
+        onClose={() => setIsAddWidgetOpen(false)}
+        enabledWidgets={enabledWidgets}
+        onToggleWidget={handleToggleWidget}
+      />
 
       {/* Detail Inspection Modal / Drawer */}
       <DetailModal

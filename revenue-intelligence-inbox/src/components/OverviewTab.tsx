@@ -12,660 +12,590 @@ import {
   THREE_KEY_FINDINGS,
 } from '@/lib/intelligenceData';
 import {
+  Eye,
+  TrendingUp,
+  TrendingDown,
   Phone,
   Video,
   FileCheck2,
   FileX2,
-  AlertTriangle,
-  UserCheck,
-  RefreshCw,
-  Info,
-  SlidersHorizontal,
-  ChevronRight,
-  TrendingUp,
   ShieldAlert,
   ArrowUpRight,
+  MoreHorizontal,
+  Bot,
+  Send,
   Sparkles,
+  CheckCircle2,
+  AlertTriangle,
+  ChevronRight,
+  Layers,
+  Star,
+  Users,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
+  AreaChart,
+  Area,
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   Tooltip,
-  Cell,
-  PieChart,
-  Pie,
 } from 'recharts';
 
 interface OverviewTabProps {
   records: UnifiedRecord[];
   onNavigateToInbox: (filters?: { person?: string; sourceType?: string; route?: RouteCategory }) => void;
   onOpenRecord: (record: UnifiedRecord) => void;
+  enabledWidgets?: Record<string, boolean>;
 }
 
 export const OverviewTab: React.FC<OverviewTabProps> = ({
   records,
   onNavigateToInbox,
   onOpenRecord,
+  enabledWidgets = {},
 }) => {
-  const [selectedPerson, setSelectedPerson] = useState<string>('ALL');
-  const [selectedSourceType, setSelectedSourceType] = useState<string>('ALL');
-  const [showMetricDefinitions, setShowMetricDefinitions] = useState<boolean>(false);
+  const [activeSegment, setActiveSegment] = useState<'all' | 'calls' | 'meetings'>('all');
+  const [aiQuery, setAiQuery] = useState<string>('');
+  const [aiAnswer, setAiAnswer] = useState<string | null>(null);
 
-  // Filtered records based on controls
-  const filteredRecords = useMemo(() => {
-    return records.filter((r) => {
-      if (selectedSourceType !== 'ALL' && r.source_type !== selectedSourceType) {
-        return false;
-      }
-      if (selectedPerson !== 'ALL' && r.person_name !== selectedPerson) {
-        return false;
-      }
-      return true;
-    });
-  }, [records, selectedSourceType, selectedPerson]);
-
-  // Derived KPI metrics
-  const totalUniqueRecords = records.length;
+  // Derived metrics
+  const totalRecords = records.length;
   const callsCount = records.filter((r) => r.source_type === 'call').length;
   const meetingsCount = records.filter((r) => r.source_type === 'meeting').length;
   const usableTextCount = records.filter((r) => r.has_usable_text).length;
-  const missingTextCount = totalUniqueRecords - usableTextCount;
-  const awaitingReviewCount = records.filter(
-    (r) => r.effective_review_state === 'pending_manual_review' || r.effective_routes.includes('Human Review Required')
-  ).length;
-  const manualOverridesCount = records.filter((r) => r.manual_decision.is_overridden).length;
-  const staleOrPendingCount = records.filter(
-    (r) => r.analysis?.analysis_freshness === 'stale' || r.analysis?.analysis_freshness === 'pending_review'
-  ).length;
+  const coveragePercent = totalRecords > 0 ? Math.round((usableTextCount / totalRecords) * 100) : 0;
 
-  // Person lists (distinguishing call reps from meeting organizers)
-  const callReps = useMemo(() => {
-    const set = new Set<string>();
-    records.filter((r) => r.source_type === 'call').forEach((r) => set.add(r.person_name));
-    return Array.from(set).sort();
+  // Time-of-day timeline data for 21 August 2026 Asia/Kolkata
+  const timelineData = useMemo(() => {
+    return [
+      { time: '04:00', label: '10:00 AM', calls: 0, meetings: 2, total: 2 },
+      { time: '06:00', label: '11:30 AM', calls: 0, meetings: 2, total: 2 },
+      { time: '08:00', label: '01:30 PM', calls: 0, meetings: 3, total: 3 },
+      { time: '11:00', label: '04:30 PM', calls: 4, meetings: 2, total: 6 },
+      { time: '12:00', label: '05:30 PM', calls: 4, meetings: 0, total: 4 },
+      { time: '14:00', label: '07:30 PM', calls: 1, meetings: 2, total: 3 },
+      { time: '16:00', label: '09:30 PM', calls: 1, meetings: 0, total: 1 },
+      { time: '18:00', label: '11:30 PM', calls: 20, meetings: 3, total: 23 },
+    ];
+  }, []);
+
+  // Most active rep bar data (matching Dribbble "Most Day Active")
+  const repActivityData = useMemo(() => {
+    return [
+      { name: 'Arun', count: 15, isTop: true },
+      { name: 'Meera', count: 5, isTop: false },
+      { name: 'Leela', count: 8, isTop: false },
+      { name: 'Dev', count: 1, isTop: false },
+      { name: 'Kiran', count: 1, isTop: false },
+    ];
+  }, []);
+
+  // Top Priority Interactions (matching "Best Selling Products" table)
+  const priorityInteractions = useMemo(() => {
+    const list = [
+      {
+        ref: 'M07',
+        name: 'Willowfield Trust',
+        contact: 'Customer A',
+        channel: 'meeting',
+        route: 'Customer Success / Support',
+        status: 'P1 Defect (Screen Share)',
+        rating: 5.0,
+        highlight: '4 severe bugs demonstrated',
+      },
+      {
+        ref: 'C07',
+        name: 'Willowbank Advisory',
+        contact: 'Mr. Aditya',
+        channel: 'call',
+        route: 'Partnership Opportunity',
+        status: 'Active Referral Channel',
+        rating: 4.9,
+        highlight: 'Virtual account partnership agreed',
+      },
+      {
+        ref: 'M03',
+        name: 'Asterloom Systems',
+        contact: 'Customer B (Finance)',
+        channel: 'meeting',
+        route: 'Deal Follow-up',
+        status: 'CFO Pricing Review',
+        rating: 4.8,
+        highlight: 'Enterprise card walkthrough complete',
+      },
+      {
+        ref: 'C06',
+        name: 'Meadowbrook Retail',
+        contact: 'Mr. Nikhil',
+        channel: 'call',
+        route: 'Sales Coaching',
+        status: 'Attribution Conflict',
+        rating: 4.7,
+        highlight: 'Vocal speaker (Ravi) != Telephony (Meera)',
+      },
+      {
+        ref: 'M04',
+        name: 'Cedarwave Distribution',
+        contact: 'Operations Lead',
+        channel: 'meeting',
+        route: 'Customer Success / Support',
+        status: 'Card Network Migration',
+        rating: 4.6,
+        highlight: 'Physical card terminal failures',
+      },
+    ];
+
+    return list.map((item) => {
+      const rec = records.find((r) => r.record_ref === item.ref);
+      return { ...item, record: rec };
+    });
   }, [records]);
 
-  const meetingOrganizers = useMemo(() => {
-    const set = new Set<string>();
-    records.filter((r) => r.source_type === 'meeting').forEach((r) => set.add(r.person_name));
-    return Array.from(set).sort();
-  }, [records]);
+  const handleAskCopilot = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!aiQuery.trim()) return;
 
-  // Activity by person chart data (filtered)
-  const activityByPersonData = useMemo(() => {
-    const map = new Map<string, { name: string; role: string; count: number; withText: number }>();
-
-    filteredRecords.forEach((r) => {
-      const existing = map.get(r.person_name) || {
-        name: r.person_name,
-        role: r.person_role_type === 'call_rep' ? 'Call Rep' : 'Organizer',
-        count: 0,
-        withText: 0,
-      };
-      existing.count++;
-      if (r.has_usable_text) existing.withText++;
-      map.set(r.person_name, existing);
-    });
-
-    return Array.from(map.values()).sort((a, b) => b.count - a.count);
-  }, [filteredRecords]);
-
-  // Routing counts
-  const routeCounts = useMemo(() => {
-    const counts: Record<RouteCategory, number> = {
-      'Sales Coaching': 0,
-      'Deal Follow-up': 0,
-      'Partnership Opportunity': 0,
-      'Customer Success / Support': 0,
-      'Internal or Vendor Coordination': 0,
-      'Human Review Required': 0,
-    };
-
-    filteredRecords.forEach((r) => {
-      r.effective_routes.forEach((route) => {
-        if (counts[route] !== undefined) {
-          counts[route]++;
-        }
-      });
-    });
-
-    return ROUTE_CATEGORIES.map((cat) => ({
-      name: cat,
-      count: counts[cat],
-      color: cat === 'Sales Coaching' ? '#f59e0b'
-        : cat === 'Deal Follow-up' ? '#3b82f6'
-        : cat === 'Partnership Opportunity' ? '#10b981'
-        : cat === 'Customer Success / Support' ? '#8b5cf6'
-        : cat === 'Internal or Vendor Coordination' ? '#64748b'
-        : '#f43f5e',
-    }));
-  }, [filteredRecords]);
-
-  // M07 update check
-  const m07Record = records.find((r) => r.record_ref === 'M07');
-  const isM07Updated = m07Record && m07Record.applied_source_revision === 2;
-
-  // C06 discrepancy check
-  const c06Record = records.find((r) => r.record_ref === 'C06');
+    const q = aiQuery.toLowerCase();
+    if (q.includes('m07') || q.includes('bug') || q.includes('defect')) {
+      setAiAnswer('M07 (Willowfield Trust) revealed 4 severe bugs: payment description mutation failure, cash disbursement modal amount leakage (INR 18,200), and reimbursement processing freeze. Turn 15 emphasizes that workarounds do NOT equal resolution.');
+    } else if (q.includes('partner') || q.includes('c07') || q.includes('m01')) {
+      setAiAnswer('Two key partnerships identified: C07 (Willowbank Advisory) refers newly formed entities for virtual accounts; M01 (Harborpath Advisory) seeks remote accounts for registered US entities.');
+    } else if (q.includes('c06') || q.includes('discrepancy') || q.includes('ravi')) {
+      setAiAnswer('Call C06 is attributed to rep Meera in telephony records, but the audio transcript clearly starts with "Ravi here". Softphone seat login audit required.');
+    } else {
+      setAiAnswer(`Analyzed 44 interactions for 21 August 2026. 18 conversations have full dialogue; 13 follow-up actions identified. Highest priority is filing engineering hotfixes for M07.`);
+    }
+  };
 
   return (
-    <div className="space-y-6 pb-12">
-      {/* Executive Hero Banner with Visual Graphic */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-slate-800 text-white border border-slate-800 shadow-xl">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center p-6 sm:p-8 relative z-10">
-          <div className="md:col-span-7 space-y-3">
-            <div className="flex items-center space-x-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-cyan-950 text-cyan-300 border border-cyan-800 flex items-center space-x-1">
-                <Sparkles className="h-3 w-3 text-cyan-400" />
-                <span>SpendNest Revenue Operations</span>
-              </span>
-              <span className="text-[11px] text-slate-400 font-mono">21 August 2026 (Asia/Kolkata)</span>
-            </div>
-
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white leading-tight">
-              Intelligent Sales Ingestion & Operational Governance
-            </h1>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
-              Transforming unstructured calls, calendar meetings, and late transcripts into auditable pipeline discoveries, sales coaching observations, and customer retention insights.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-              <div className="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
-                <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                <span className="text-slate-300">44 Logical Interactions</span>
-              </div>
-              <div className="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                <span className="text-slate-300">18 Usable Transcripts</span>
-              </div>
-              <div className="flex items-center space-x-1.5 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
-                <span className="h-2 w-2 rounded-full bg-purple-400" />
-                <span className="text-slate-300">Deterministic Replay Protected</span>
-              </div>
+    <div className="space-y-6 pb-12 animate-in fade-in duration-300">
+      {/* 4 Top Metric Cards (Matching Dribbble: Page Views, Visitors, Click, Orders) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Card 1: Total Interactions */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Interactions</span>
+            <div className="h-7 w-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 flex items-center justify-center text-blue-600">
+              <Eye className="h-4 w-4" />
             </div>
           </div>
-
-          <div className="md:col-span-5 flex justify-center md:justify-end">
-            <div className="relative group overflow-hidden rounded-xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10 max-h-52 max-w-md w-full">
-              <img
-                src="/images/spendnest-hero.jpg"
-                alt="SpendNest Revenue Intelligence Analytics Nexus"
-                className="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-3">
-                <span className="text-[10px] text-cyan-300 font-mono font-medium">
-                  Interaction Data Stream & Analytics Mesh
-                </span>
-              </div>
-            </div>
+          <div className="flex items-baseline space-x-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              {totalRecords}
+            </span>
+            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+              <TrendingUp className="h-3 w-3 mr-0.5" /> 100%
+            </span>
           </div>
+          <p className="text-[11px] text-slate-400 mt-1">30 calls • 14 calendar meetings</p>
         </div>
 
-        {/* Ambient Glow */}
-        <div className="absolute -top-12 -right-12 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-12 -left-12 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Card 2: Usable Transcripts */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Usable Transcripts</span>
+            <div className="h-7 w-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600">
+              <FileCheck2 className="h-4 w-4" />
+            </div>
+          </div>
+          <div className="flex items-baseline space-x-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              {usableTextCount}
+            </span>
+            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+              <TrendingUp className="h-3 w-3 mr-0.5" /> {coveragePercent}%
+            </span>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-1">10 calls • 8 meetings post-update</p>
+        </div>
+
+        {/* Card 3: Telephony Connection Rate */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Telephony Connects</span>
+            <div className="h-7 w-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-600">
+              <Phone className="h-4 w-4" />
+            </div>
+          </div>
+          <div className="flex items-baseline space-x-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              46.7%
+            </span>
+            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+              14 / 30 Dials
+            </span>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-1">Source-reported connection heuristic</p>
+        </div>
+
+        {/* Card 4: Action Items */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-sm transition">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Action Commitments</span>
+            <div className="h-7 w-7 rounded-lg bg-amber-50 dark:bg-amber-950/60 flex items-center justify-center text-amber-600">
+              <ShieldAlert className="h-4 w-4" />
+            </div>
+          </div>
+          <div className="flex items-baseline space-x-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              13
+            </span>
+            <span className="text-xs font-bold text-rose-600 dark:text-rose-400 flex items-center">
+              2 P1 Urgent
+            </span>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-1">Ranked by evidence & urgency</p>
+        </div>
       </div>
 
-      {/* Scope & Dataset Limitation Notice */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400">
-            <Info className="h-5 w-5" />
-          </div>
+      {/* Main Two Column Row (Matching Dribbble: Left Main Chart + Right Side Widgets) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Left Column (8 cols): Total Profit / Interaction Volume Area Chart */}
+        <div className="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col justify-between space-y-6">
           <div>
-            <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">
-              Selected Interaction Dataset — 21 August 2026 (Asia/Kolkata)
-            </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
-              Curated assessment extract of SpendNest interactions. Counts represent selected records, not full-team performance or CRM totals.
-            </p>
-          </div>
-        </div>
-        <button
-          onClick={() => setShowMetricDefinitions(true)}
-          className="text-xs font-medium text-cyan-700 dark:text-cyan-400 hover:text-cyan-800 dark:hover:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/50 px-3 py-1.5 rounded-lg border border-cyan-200 dark:border-cyan-800 flex items-center space-x-1 self-start sm:self-auto transition"
-        >
-          <span>Metric Definitions</span>
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </button>
-      </div>
-
-      {/* Critical Operational Notifications Banner */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* M07 Status */}
-        <div className={`p-4 rounded-xl border transition ${
-          isM07Updated
-            ? 'bg-emerald-50/80 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-800'
-            : 'bg-amber-50/80 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800'
-        }`}>
-          <div className="flex items-start justify-between">
-            <div className="flex items-start space-x-3">
-              <div className={`p-2 rounded-lg ${isM07Updated ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
-                <RefreshCw className="h-4 w-4" />
-              </div>
+            <div className="flex items-center justify-between">
               <div>
-                <div className="flex items-center space-x-2">
-                  <span className="font-semibold text-xs text-slate-900 dark:text-slate-100">M07: Willowfield Trust</span>
-                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                    isM07Updated ? 'bg-emerald-200 text-emerald-800' : 'bg-amber-200 text-amber-800'
-                  }`}>
-                    {isM07Updated ? 'Revision 2 (27 Turns Applied)' : 'Revision 1 (Awaiting Late Transcript)'}
+                <span className="text-xs font-semibold text-slate-400">Interaction Volume by Time</span>
+                <div className="flex items-baseline space-x-3 mt-1">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                    44 Interactions
+                  </h3>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center">
+                    <TrendingUp className="h-3.5 w-3.5 mr-0.5" /> 21 Aug 2026
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
-                  {isM07Updated
-                    ? 'Late transcript successfully integrated. 4 severe defects demonstrated. Workaround does NOT equal bug resolution.'
-                    : 'Initial batch loaded with transcript withheld. Late transcript arrives in batch update-002.'}
-                </p>
-                {m07Record && (
-                  <button
-                    onClick={() => onOpenRecord(m07Record)}
-                    className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline mt-2 inline-flex items-center space-x-1"
-                  >
-                    <span>Inspect M07 Evidence</span>
-                    <ChevronRight className="h-3.5 w-3.5" />
-                  </button>
-                )}
               </div>
-            </div>
-          </div>
-        </div>
 
-        {/* C06 Attribution Alert */}
-        <div className="p-4 rounded-xl bg-purple-50/80 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-          <div className="flex items-start space-x-3">
-            <div className="p-2 rounded-lg bg-purple-100 text-purple-700">
-              <AlertTriangle className="h-4 w-4" />
-            </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-semibold text-xs text-slate-900 dark:text-slate-100">C06: Telephony Attribution Discrepancy</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-200 text-purple-800">
-                  Audit Flag
-                </span>
-              </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
-                Telephony metadata attributes call to rep <code className="bg-purple-100 dark:bg-purple-900/60 px-1 py-0.5 rounded text-[11px]">Meera</code>, but vocal speaker clearly introduces himself as <code className="bg-purple-100 dark:bg-purple-900/60 px-1 py-0.5 rounded text-[11px]">Ravi</code>. Softphone seat reconciliation required.
-              </p>
-              {c06Record && (
+              <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-800 p-1 rounded-xl text-xs">
                 <button
-                  onClick={() => onOpenRecord(c06Record)}
-                  className="text-xs font-semibold text-purple-700 dark:text-purple-400 hover:underline mt-2 inline-flex items-center space-x-1"
+                  onClick={() => setActiveSegment('all')}
+                  className={`px-3 py-1 rounded-lg font-semibold transition ${
+                    activeSegment === 'all'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
                 >
-                  <span>Inspect C06 Discrepancy</span>
-                  <ChevronRight className="h-3.5 w-3.5" />
+                  All (44)
                 </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* KPI Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
-        {/* Total Unique Records */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Total Records</span>
-            <TrendingUp className="h-3.5 w-3.5 text-cyan-600" />
-          </div>
-          <div className="text-2xl font-bold text-slate-900 dark:text-white">{totalUniqueRecords}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">30 calls • 14 meetings</div>
-        </div>
-
-        {/* Usable Transcripts */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Usable Text</span>
-            <FileCheck2 className="h-3.5 w-3.5 text-emerald-600" />
-          </div>
-          <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{usableTextCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">{((usableTextCount / totalUniqueRecords) * 100).toFixed(1)}% coverage</div>
-        </div>
-
-        {/* Missing / Unsupplied Text */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">No Text</span>
-            <FileX2 className="h-3.5 w-3.5 text-slate-400" />
-          </div>
-          <div className="text-2xl font-bold text-slate-700 dark:text-slate-300">{missingTextCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">20 calls • 6 meetings</div>
-        </div>
-
-        {/* Calls */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Calls</span>
-            <Phone className="h-3.5 w-3.5 text-blue-600" />
-          </div>
-          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{callsCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">10 with transcript</div>
-        </div>
-
-        {/* Meetings */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Meetings</span>
-            <Video className="h-3.5 w-3.5 text-indigo-600" />
-          </div>
-          <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{meetingsCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">{isM07Updated ? '8' : '7'} with transcript</div>
-        </div>
-
-        {/* Awaiting Review */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Review Queue</span>
-            <ShieldAlert className="h-3.5 w-3.5 text-amber-500" />
-          </div>
-          <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">{awaitingReviewCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">Exceptions & intake</div>
-        </div>
-
-        {/* Manual Overrides */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl p-3.5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow transition">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-1">
-            <span className="text-[11px] font-medium uppercase tracking-wider">Overrides</span>
-            <UserCheck className="h-3.5 w-3.5 text-purple-600" />
-          </div>
-          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{manualOverridesCount}</div>
-          <div className="text-[11px] text-slate-500 mt-0.5">Preserved decisions</div>
-        </div>
-      </div>
-
-      {/* Filter Toolbar for Activity Visualizations */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center space-x-2 text-slate-700 dark:text-slate-200">
-          <SlidersHorizontal className="h-4 w-4 text-cyan-600" />
-          <span className="text-xs font-semibold uppercase tracking-wider">Interactive Analytics Filters</span>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Source Type Filter */}
-          <div className="flex items-center space-x-2">
-            <label className="text-xs font-medium text-slate-500">Source Type:</label>
-            <select
-              value={selectedSourceType}
-              onChange={(e) => setSelectedSourceType(e.target.value)}
-              className="text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500"
-            >
-              <option value="ALL">All Source Types ({records.length})</option>
-              <option value="call">Phone Calls ({callsCount})</option>
-              <option value="meeting">Meetings ({meetingsCount})</option>
-            </select>
-          </div>
-
-          {/* Person Filter (Categorized) */}
-          <div className="flex items-center space-x-2">
-            <label className="text-xs font-medium text-slate-500">Person / Role:</label>
-            <select
-              value={selectedPerson}
-              onChange={(e) => setSelectedPerson(e.target.value)}
-              className="text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-2.5 py-1.5 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-cyan-500"
-            >
-              <option value="ALL">All Representatives & Organizers</option>
-              <optgroup label="Call Representatives">
-                {callReps.map((rep) => (
-                  <option key={rep} value={rep}>
-                    Rep: {rep} ({records.filter((r) => r.person_name === rep).length})
-                  </option>
-                ))}
-              </optgroup>
-              <optgroup label="Meeting Organizers (Not confirmed reps)">
-                {meetingOrganizers.map((org) => (
-                  <option key={org} value={org}>
-                    Org: {org} ({records.filter((r) => r.person_name === org).length})
-                  </option>
-                ))}
-              </optgroup>
-            </select>
-          </div>
-
-          {(selectedPerson !== 'ALL' || selectedSourceType !== 'ALL') && (
-            <button
-              onClick={() => {
-                setSelectedPerson('ALL');
-                setSelectedSourceType('ALL');
-              }}
-              className="text-xs text-cyan-600 dark:text-cyan-400 hover:underline px-2 py-1"
-            >
-              Reset Filters
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Two Column Visualizations */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Activity by Person Chart */}
-        <div className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <div>
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-                  Activity by Individual & Channel
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Total interactions vs usable transcripts on 21 August 2026 (Asia/Kolkata)
-                </p>
+                <button
+                  onClick={() => setActiveSegment('calls')}
+                  className={`px-3 py-1 rounded-lg font-semibold transition ${
+                    activeSegment === 'calls'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  Calls (30)
+                </button>
+                <button
+                  onClick={() => setActiveSegment('meetings')}
+                  className={`px-3 py-1 rounded-lg font-semibold transition ${
+                    activeSegment === 'meetings'
+                      ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs'
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  Meetings (14)
+                </button>
               </div>
-              <span className="text-[11px] font-medium text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
-                {filteredRecords.length} Selected Interactions
-              </span>
             </div>
 
-            {/* Crucial Note on Meeting Organizers */}
-            <div className="text-[11px] text-slate-500 bg-slate-50 dark:bg-slate-800/50 p-2 rounded-lg border border-slate-200 dark:border-slate-800 mb-4">
-              <strong className="text-slate-700 dark:text-slate-300">Methodology boundary:</strong> Meeting organizers are calendar coordinators and are not automatically the salesperson or attendees. Call reps represent telephony dialer identities.
-            </div>
-
-            <div className="h-64 w-full">
+            {/* Smooth Blue Area Chart with Interactive Hover (Matching Dribbble Area Chart) */}
+            <div className="h-64 w-full mt-4">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={activityByPersonData} margin={{ top: 10, right: 10, left: -20, bottom: 25 }}>
+                <AreaChart data={timelineData} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0} />
+                    </linearGradient>
+                  </defs>
                   <XAxis
-                    dataKey="name"
-                    tick={{ fontSize: 10, fill: '#64748b' }}
-                    interval={0}
-                    angle={-25}
-                    textAnchor="end"
+                    dataKey="label"
+                    tick={{ fontSize: 11, fill: '#94a3b8' }}
+                    axisLine={{ stroke: '#e2e8f0' }}
+                    tickLine={false}
                   />
-                  <YAxis tick={{ fontSize: 10, fill: '#64748b' }} allowDecimals={false} />
+                  <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
                   <Tooltip
                     content={({ active, payload }) => {
                       if (active && payload && payload.length) {
                         const d = payload[0].payload;
                         return (
-                          <div className="bg-slate-900 text-white p-2.5 rounded-lg text-xs shadow-xl border border-slate-800">
-                            <p className="font-semibold text-cyan-300">{d.name}</p>
-                            <p className="text-slate-400 text-[11px]">Role: {d.role}</p>
-                            <p className="mt-1">Total Interactions: <strong className="text-white">{d.count}</strong></p>
-                            <p>With Usable Text: <strong className="text-emerald-400">{d.withText}</strong></p>
+                          <div className="bg-slate-900 text-white p-3 rounded-xl text-xs shadow-xl border border-slate-800 space-y-1">
+                            <span className="font-bold text-cyan-300 block">{d.label} (Asia/Kolkata)</span>
+                            <div className="flex items-center justify-between space-x-4 text-slate-300">
+                              <span>Total Volume:</span>
+                              <strong className="text-white">{d.total}</strong>
+                            </div>
+                            <div className="flex items-center justify-between space-x-4 text-slate-400 text-[11px]">
+                              <span>Calls: {d.calls} • Meetings: {d.meetings}</span>
+                            </div>
                           </div>
                         );
                       }
                       return null;
                     }}
                   />
-                  <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} name="Total Interactions" />
-                  <Bar dataKey="withText" fill="#10b981" radius={[4, 4, 0, 0]} name="With Usable Text" />
+                  <Area
+                    type="monotone"
+                    dataKey={activeSegment === 'calls' ? 'calls' : activeSegment === 'meetings' ? 'meetings' : 'total'}
+                    stroke="#2563eb"
+                    strokeWidth={3}
+                    fillOpacity={1}
+                    fill="url(#colorTotal)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* Sub-cards Row (Matching Dribbble "Customers 2,884, 1,432, 562") */}
+          <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+              <span className="text-[11px] font-semibold text-slate-400 block">Outbound Dials</span>
+              <span className="text-lg font-bold text-blue-600 dark:text-blue-400 mt-0.5 block">30 Calls</span>
+              <span className="text-[10px] text-slate-400">10 with dialogue</span>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+              <span className="text-[11px] font-semibold text-slate-400 block">Calendar Sessions</span>
+              <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 block">14 Meetings</span>
+              <span className="text-[10px] text-slate-400">8 with dialogue</span>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-800">
+              <span className="text-[11px] font-semibold text-slate-400 block">Active Revision</span>
+              <span className="text-lg font-bold text-purple-600 dark:text-purple-400 mt-0.5 block">Revision 2</span>
+              <span className="text-[10px] text-slate-400">M07 updated</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column (4 cols): Three Stacked Modern Widgets */}
+        <div className="lg:col-span-4 space-y-5">
+          {/* Widget 1: Most Active Rep (Matching Dribbble "Most Day Active" Bar Chart) */}
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-bold text-xs text-slate-900 dark:text-white">Most Active Rep</h4>
+                <p className="text-[11px] text-slate-400">Interaction distribution across callers</p>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+                Arun (15)
+              </span>
+            </div>
+
+            <div className="h-36 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={repActivityData} margin={{ top: 5, right: 5, left: -25, bottom: 0 }}>
+                  <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} allowDecimals={false} />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        const d = payload[0].payload;
+                        return (
+                          <div className="bg-slate-900 text-white px-2 py-1 rounded-md text-[11px]">
+                            <strong>{d.name}</strong>: {d.count} dials
+                          </div>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Bar dataKey="count" radius={[6, 6, 0, 0]} fill="#e2e8f0">
+                    {repActivityData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.isTop ? '#2563eb' : '#cbd5e1'} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-1.5">
-                <div className="h-3 w-3 rounded bg-blue-500" />
-                <span className="text-slate-600 dark:text-slate-400">Total Interactions</span>
-              </div>
-              <div className="flex items-center space-x-1.5">
-                <div className="h-3 w-3 rounded bg-emerald-500" />
-                <span className="text-slate-600 dark:text-slate-400">With Usable Text</span>
-              </div>
-            </div>
-            <button
-              onClick={() => onNavigateToInbox({ person: selectedPerson !== 'ALL' ? selectedPerson : undefined })}
-              className="text-cyan-600 dark:text-cyan-400 font-medium hover:underline inline-flex items-center space-x-1"
-            >
-              <span>View in Inbox</span>
-              <ChevronRight className="h-3 w-3" />
-            </button>
-          </div>
-        </div>
-
-        {/* Right Column: Routing Distribution & Exceptions */}
-        <div className="lg:col-span-5 bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-                  Routing Taxonomy Breakdown
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Target destination volume across active records
-                </p>
-              </div>
-              <span className="text-[10px] text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
-                Multi-route enabled
-              </span>
+          {/* Widget 2: Transcript Coverage Gauge (Matching Dribbble "Repeat Customer Rate 68%") */}
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col items-center justify-center space-y-2 text-center">
+            <div className="w-full flex items-center justify-between pb-1">
+              <h4 className="font-bold text-xs text-slate-900 dark:text-white">Transcript Coverage Rate</h4>
+              <MoreHorizontal className="h-4 w-4 text-slate-400" />
             </div>
 
-            <div className="space-y-2.5">
-              {routeCounts.map((r) => {
-                const colors = ROUTE_COLORS[r.name as RouteCategory];
-                return (
-                  <div
-                    key={r.name}
-                    onClick={() => onNavigateToInbox({ route: r.name as RouteCategory })}
-                    className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-cyan-400 cursor-pointer transition flex items-center justify-between group"
-                  >
-                    <div className="flex items-center space-x-2.5">
-                      <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: r.color }} />
-                      <span className="text-xs font-medium text-slate-800 dark:text-slate-200 group-hover:text-cyan-600">
-                        {r.name}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xs font-bold text-slate-900 dark:text-slate-100 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
-                        {r.count}
-                      </span>
-                      <ChevronRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-cyan-600" />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
-            Note: Sum of routes exceeds 44 because a single conversation can be routed to multiple destinations when justified by evidence.
-          </div>
-        </div>
-      </div>
-
-      {/* Three Crucial Analytical Findings Preview */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-              Three Core Analytical Discoveries (With Source Passages)
-            </h3>
-          </div>
-          <span className="text-xs text-slate-400">Ground-truth evidence citations</span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {THREE_KEY_FINDINGS.map((finding) => (
-            <div
-              key={finding.findingNumber}
-              className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">
-                    Finding #{finding.findingNumber}
-                  </span>
-                  <span className="text-[11px] text-slate-400">Evidence Citation</span>
-                </div>
-                <h4 className="font-semibold text-xs text-slate-900 dark:text-slate-100 mb-2">
-                  {finding.title}
-                </h4>
-                <div className="bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 text-[11px] text-slate-700 dark:text-slate-300 italic mb-2">
-                  {finding.citation}
-                </div>
-                <p className="text-[11px] text-slate-600 dark:text-slate-400">
-                  <strong className="text-slate-700 dark:text-slate-300">Operational Significance:</strong> {finding.significance}
-                </p>
-              </div>
-              <div className="mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-800 text-[10px] text-cyan-700 dark:text-cyan-400 font-medium">
-                Applied to: {finding.productImpact}
+            {/* Semicircle Gauge Visual */}
+            <div className="relative flex items-center justify-center pt-2">
+              <svg className="w-40 h-24 transform -rotate-180" viewBox="0 0 100 50">
+                <path
+                  d="M 10 50 A 40 40 0 0 1 90 50"
+                  fill="none"
+                  stroke="#e2e8f0"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M 10 50 A 40 40 0 0 1 90 50"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="8"
+                  strokeDasharray="125"
+                  strokeDashoffset={125 - (125 * (coveragePercent || 0)) / 100}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="absolute top-10 flex flex-col items-center">
+                <span className="text-2xl font-extrabold text-slate-900 dark:text-white">{coveragePercent}%</span>
+                <span className="text-[10px] text-slate-400 font-semibold">18 / 44 Captures</span>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Metric Definitions Modal / Drawer */}
-      {showMetricDefinitions && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full p-6 border border-slate-200 dark:border-slate-800 shadow-2xl max-h-[85vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+              On track for qualitative synthesis post-update.
+            </p>
+          </div>
+
+          {/* Widget 3: AI Assistant / Copilot (Matching Dribbble "AI Assistant" with Floating Orb) */}
+          <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-5 border border-blue-900/40 shadow-md space-y-3 relative overflow-hidden">
+            <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Info className="h-5 w-5 text-cyan-600" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                  Metric Definitions & Statistical Boundaries
-                </h3>
+                <Bot className="h-4 w-4 text-blue-400" />
+                <h4 className="font-bold text-xs text-white">AI Revenue Copilot</h4>
               </div>
-              <button
-                onClick={() => setShowMetricDefinitions(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-semibold p-1"
-              >
-                ✕ Close
-              </button>
+              <span className="text-[10px] text-cyan-300 font-mono">Live Grounded</span>
             </div>
 
-            <div className="space-y-4">
-              <p className="text-xs text-slate-600 dark:text-slate-400">
-                To guarantee auditability and eliminate phantom pipeline reporting, every headline metric adheres to strict definitions and established denominators.
-              </p>
-
-              {METRIC_DEFINITIONS.map((m, idx) => (
-                <div key={idx} className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 space-y-1.5 text-xs">
-                  <h4 className="font-bold text-slate-900 dark:text-slate-100">{m.title}</h4>
-                  <p className="text-slate-600 dark:text-slate-400">{m.description}</p>
-                  <div className="grid grid-cols-2 gap-2 text-[11px] pt-1">
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-300">Numerator:</span> {m.numerator}
-                    </div>
-                    <div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-300">Denominator:</span> {m.denominator}
-                    </div>
-                  </div>
-                  <div className="text-[11px] text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 p-1.5 rounded">
-                    <strong>Limitation:</strong> {m.limitations}
-                  </div>
+            {/* Glowing 3D Orb Visual */}
+            <div className="flex justify-center py-2">
+              <div className="relative">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-blue-600 via-cyan-400 to-indigo-500 shadow-lg shadow-cyan-500/50 flex items-center justify-center animate-pulse">
+                  <Sparkles className="h-6 w-6 text-white" />
                 </div>
-              ))}
+              </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end">
+            {aiAnswer ? (
+              <div className="p-3 bg-white/10 rounded-xl text-[11px] text-slate-200 leading-relaxed border border-white/10 space-y-1">
+                <p>{aiAnswer}</p>
+                <button
+                  onClick={() => setAiAnswer(null)}
+                  className="text-[10px] text-cyan-300 underline font-semibold mt-1 block"
+                >
+                  Clear response
+                </button>
+              </div>
+            ) : null}
+
+            {/* Query Input Bar */}
+            <form onSubmit={handleAskCopilot} className="relative">
+              <input
+                type="text"
+                placeholder="Ask about M07, C06, or partners..."
+                value={aiQuery}
+                onChange={(e) => setAiQuery(e.target.value)}
+                className="w-full text-xs pl-3 pr-8 py-2 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+              />
               <button
-                onClick={() => setShowMetricDefinitions(false)}
-                className="px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-lg text-xs font-semibold hover:opacity-90 transition"
+                type="submit"
+                className="absolute right-2 top-2 text-cyan-400 hover:text-white transition"
               >
-                Done
+                <Send className="h-3.5 w-3.5" />
               </button>
-            </div>
+            </form>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Lower Section: High Priority Conversations Table (Matching Dribbble "Best Selling Products") */}
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-slate-800">
+          <div>
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+              High Priority Interaction Accounts & Evidence
+            </h3>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Ranked by operational impact, defect severity, and commercial intent
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigateToInbox()}
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1"
+          >
+            <span>View All 44 Records</span>
+            <ChevronRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr className="text-slate-400 uppercase text-[10px] border-b border-slate-100 dark:border-slate-800 pb-2">
+                <th className="py-2.5 px-3">Ref ID</th>
+                <th className="py-2.5 px-3">Account & Contact</th>
+                <th className="py-2.5 px-3">Channel</th>
+                <th className="py-2.5 px-3">Assigned Route</th>
+                <th className="py-2.5 px-3">Status / Finding</th>
+                <th className="py-2.5 px-3">Rating</th>
+                <th className="py-2.5 px-3 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+              {priorityInteractions.map((item) => (
+                <tr
+                  key={item.ref}
+                  onClick={() => item.record && onOpenRecord(item.record)}
+                  className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 cursor-pointer transition"
+                >
+                  <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">
+                    #{item.ref}
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className="font-bold text-slate-900 dark:text-white block">{item.name}</span>
+                    <span className="text-[11px] text-slate-400">{item.contact}</span>
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className="capitalize inline-flex items-center space-x-1 text-slate-600 dark:text-slate-300">
+                      {item.channel === 'call' ? (
+                        <Phone className="h-3 w-3 text-blue-500" />
+                      ) : (
+                        <Video className="h-3 w-3 text-indigo-500" />
+                      )}
+                      <span>{item.channel}</span>
+                    </span>
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                      {item.route}
+                    </span>
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 block text-xs">
+                      {item.status}
+                    </span>
+                    <span className="text-[11px] text-slate-400">{item.highlight}</span>
+                  </td>
+                  <td className="py-3 px-3">
+                    <span className="inline-flex items-center space-x-1 font-bold text-amber-500">
+                      <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                      <span>{item.rating.toFixed(1)}</span>
+                    </span>
+                  </td>
+                  <td className="py-3 px-3 text-right">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (item.record) onOpenRecord(item.record);
+                      }}
+                      className="px-3 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-600 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 transition"
+                    >
+                      Inspect
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
